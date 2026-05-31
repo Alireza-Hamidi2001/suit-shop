@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { FaTelegram, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaTelegram, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import Logo from "./Logo";
 
 function Footer() {
@@ -56,26 +56,34 @@ function Footer() {
                         <ul className="flex gap-4">
                             <li>
                                 <Link
-                                    href=""
+                                    href="https://t.me/alireza_arh12"
                                     target="_blank"
                                 >
-                                    <FaTelegram className="w-10 h-10 hover:-translate-y-0.5 duration-200 transition-all" />
+                                    <FaTelegram className="socialIcon" />
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href=""
+                                    href="https://www.instagram.com/__alireza.hamidi__/"
                                     target="_blank"
                                 >
-                                    <FaInstagram className="w-10 h-10 hover:-translate-y-0.5 duration-200 transition-all" />
+                                    <FaInstagram className="socialIcon" />
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href=""
+                                    href="https://www.linkedin.com/in/alireza-hamidi-aa8547288"
                                     target="_blank"
                                 >
-                                    <FaLinkedin className="w-10 h-10 hover:-translate-y-0.5 duration-200 transition-all" />
+                                    <FaLinkedin className="socialIcon" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="https://github.com/Alireza-Hamidi2001"
+                                    target="_blank"
+                                >
+                                    <FaGithub className="socialIcon" />
                                 </Link>
                             </li>
                         </ul>
@@ -83,8 +91,7 @@ function Footer() {
                 </div>
                 <div className="dark:border-gray-800 text-center">
                     <p className="paragraph copyright text-2xl">
-                        &copy;  Suitelier. All rights
-                        reserved.
+                        &copy; Alireza Hamidi. All rights reserved.
                     </p>
                 </div>
             </div>
