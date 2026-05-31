@@ -1,0 +1,96 @@
+{
+  "cabins": [
+    {
+      "id": 1,
+      "name": "Luxury Forest Cabin",
+      "maxCapacity": 4,
+      "regularPrice": 250,
+      "discount": 10,
+      "description": "Luxury cabin with forest view, private jacuzzi and fireplace",
+      "amenities": [
+        "WiFi",
+        "Jacuzzi",
+        "Fireplace",
+        "Mini Bar",
+        "King Bed"
+      ],
+      "rating": 4.8
+    },
+    {
+      "id": 2,
+      "name": "Romantic Lake House",
+      "maxCapacity": 2,
+      "regularPrice": 180,
+      "discount": 0,
+      "description": "Perfect for couples, with stunning lake view and private terrace",
+      "amenities": [
+        "WiFi",
+        "Lake View",
+        "Terrace",
+        "Queen Bed",
+        "Breakfast"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 3,
+      "name": "Mountain Family Lodge",
+      "maxCapacity": 6,
+      "regularPrice": 320,
+      "discount": 15,
+      "description": "Spacious lodge for families, near ski slopes",
+      "amenities": [
+        "WiFi",
+        "Ski Storage",
+        "Full Kitchen",
+        "BBQ",
+        "2 Bedrooms"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 4,
+      "name": "Beachfront Bungalow",
+      "maxCapacity": 3,
+      "regularPrice": 210,
+      "discount": 5,
+      "description": "Steps away from private beach, perfect for relaxation",
+      "amenities": [
+        "WiFi",
+        "Beach Access",
+        "Air Conditioning",
+        "Kayak",
+        "Ocean View"
+      ],
+      "rating": 4.9
+    },
+    {
+      "id": 5,
+      "name": "Desert Oasis Suite",
+      "maxCapacity": 4,
+      "regularPrice": 195,
+      "discount": 0,
+      "description": "Unique desert experience with stargazing deck",
+      "amenities": [
+        "WiFi",
+        "Stargazing Deck",
+        "Pool",
+        "4x4 Tours",
+        "Moroccan Style"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 1778405225136,
+      "name": "cabin 6",
+      "maxCapacity": 6,
+      "regularPrice": 300,
+      "discount": 5,
+      "description": "test",
+      "amenities": [
+        "wifi"
+      ],
+      "rating": 4.5
+    }
+  ]
+}

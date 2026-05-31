@@ -1,0 +1,227 @@
+/* globals.css */
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-loader-1: #a5b4fc;
+    --color-loader-2: #3730a3;
+
+    --color-title-light: #a5b4fc;
+    --color-title-dark: #3730a3;
+
+    --color-paragraph-light: #000;
+    --color-paragraph-dark: #bbb;
+}
+
+@layer components {
+    .input {
+        @apply w-full p-2 tracking-wider bg-amber-50 border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:border-zinc-500 dark:focus:border-zinc-500 dark:bg-zinc-800 rounded;
+    }
+    .label {
+        font-family: var(--font-comic), cursive;
+        @apply tracking-wider block mb-2;
+    }
+    .discount {
+        font-family: var(--font-courgette), cursive;
+        @apply absolute top-2 left-2 bg-red-600 text-white text-sm px-2 py-1 rounded-full;
+    }
+    .navigation {
+        @apply text-[0.7rem] tracking-widest text-black dark:text-white
+                                    transition-all duration-300 
+                                    flex items-center gap-1;
+    }
+    .title {
+        font-family: var(--font-courgette), cursive;
+        @apply text-6xl mb-10 text-black dark:text-white font-medium tracking-wider;
+    }
+    .paragraph {
+        font-family: var(--font-open-sans), cursive;
+        @apply text-paragraph-light dark:text-paragraph-dark leading-relaxed text-[1rem] tracking-wide mb-10;
+    }
+    .subHeading {
+        @apply text-sm uppercase tracking-widest text-amber-600 font-semibold;
+    }
+    .button {
+        font-family: var(--font-comic), cursive;
+        @apply transition-all duration-200 hover:-translate-y-1 capitalize text-black dark:text-white hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black border-b border-b-black dark:border-b-white  px-3 py-3 hover:cursor-pointer;
+    }
+    .addButton {
+        font-family: var(--font-open-sans), cursive;
+        @apply flex gap-2 transition-all duration-200 hover:-translate-y-1 capitalize bg-amber-600 hover:bg-amber-700 dark:bg-amber-600 dark:hover:bg-amber-700 text-white  px-4 py-2 hover:cursor-pointer;
+    }
+    .backButton {
+        font-family: var(--font-open-sans), cursive;
+        @apply flex gap-2 transition-all duration-200 hover:-translate-y-1 capitalize border-b border-black dark:border-white  text-black dark:text-white  px-4 py-2 hover:cursor-pointer;
+    }
+    .cardButton {
+        @apply transition-all duration-200 hover:-translate-y-1 capitalize text-black dark:text-white hover:text-white hover:bg-black text-sm dark:hover:bg-white dark:hover:text-black border-b border-b-black dark:border-b-white  px-1.5 py-1.5 hover:cursor-pointer mt-4;
+    }
+    .loginBtn {
+        font-family: var(--font-comic), cursive;
+        @apply bg-green-700 dark:bg-green-600 px-3 py-2  rounded-sm text-white hover:bg-green-800 dark:hover:bg-green-700 hover:cursor-pointer hover:-translate-y-0.5 transition-all disabled:cursor-not-allowed disabled:bg-gray-500;
+    }
+
+    .logoutBtn {
+        font-family: var(--font-comic), cursive;
+        @apply px-2 py-2 bg-red-600 dark:bg-red-500  rounded-sm text-white hover:bg-red-700 dark:hover:bg-red-600 hover:cursor-pointer hover:-translate-y-0.5 transition-all disabled:cursor-not-allowed disabled:bg-gray-500;
+    }
+    .dismisBtn {
+        font-family: var(--font-comic), cursive;
+        @apply border-b border-white/0 px-2 py-2  text-black dark:text-white hover:border-black dark:hover:border-white dark:hover:border-black hover:cursor-pointer hover:-translate-y-0.5 transition-all disabled:cursor-not-allowed disabled:bg-gray-500;
+    }
+    .filter {
+        @apply hover:bg-amber-200 dark:hover:bg-zinc-700 py-2 px-4 hover:cursor-pointer duration-200 transition-all;
+    }
+    .times { 
+        @apply w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-red-500 transition-all text-2xl
+    }
+    .copyright {
+        font-family: var(--font-coiny), cursive;
+    }
+    .open-sans {
+        font-family: var(--font-open-sans), cursive;
+    }
+
+    .spinner {
+        margin: 3.2rem auto 1.6rem;
+        width: 60px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 5px solid #fef6ab;
+        border-right-color: #fc7e00;
+        animation: rotate 1s infinite linear;
+    }
+
+    .spinner-mini {
+        margin: 0;
+        width: 20px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 2px solid var(--color-loader-1);
+        border-right-color: transparent;
+        animation: rotate 1s infinite linear;
+    }
+
+    .error {
+        animation: error 0.7s infinite linear;
+    }
+    .shakeHand {
+        animation: hand 1s infinite linear;
+    }
+    .clickAnimation {
+        animation: click 0.9s infinite linear;
+    }
+    .bubbleAnimation1 {
+        animation: bubble1 3s infinite ease-in-out;
+    }
+    .bubbleAnimation2 {
+        animation: bubble2 4s infinite ease-in-out;
+    }
+    .bubbleAnimation3 {
+        animation: bubble3 5s infinite ease-in-out;
+    }
+
+    @keyframes rotate {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+    @keyframes bubble1 {
+        0%,
+        100% {
+            transform: translateY(-3rem);
+        }
+        50% {
+            transform: translateY(-9rem);
+        }
+    }
+    @keyframes bubble2 {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-9rem);
+        }
+    }
+    @keyframes bubble3 {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-4rem);
+        }
+    }
+    @keyframes click {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.3;
+        }
+    }
+    @keyframes error {
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.4;
+            transform: scale(1.1);
+        }
+    }
+    @keyframes hand {
+        0%,
+        100% {
+        }
+        50% {
+            transform: rotate(-20deg);
+        }
+    }
+}
+
+/* For date picker */
+.rdp {
+    --rdp-cell-size: 32px !important;
+    --rdp-accent-color: var(--color-accent-500) !important;
+    --rdp-background-color: var(--color-accent-600) !important;
+    margin: 0 !important;
+}
+
+@layer utilities {
+    .font-caveat {
+        font-family: var(--font-caveat), cursive;
+    }
+    .font-courgette {
+        font-family: var(--font-courgette), cursive;
+    }
+    .font-open-sans {
+        font-family: var(--font-open-sans), cursive;
+    }
+    .font-lime {
+        font-family: var(--font-lime), cursive;
+    }
+    .font-comic {
+        font-family: var(--font-comic), cursive;
+    }
+}
+
+.image-shadow-light {
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.594);
+}
+.image-shadow-dark {
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.808);
+}
+.box-shadow-light {
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+}
+.box-shadow-dark {
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+}
