@@ -13,14 +13,14 @@ function Logo() {
                 src={logo_light_theme}
                 quality={100}
                 placeholder="blur"
-                className="w-40 block dark:hidden"
+                className="w-50 md:w-40 block dark:hidden"
                 alt="The Wild Oasis logo"
             />
             <Image
                 src={logo_dark_theme}
                 quality={100}
                 placeholder="blur"
-                className="w-40 hidden dark:block"
+                className="w-50 md:w-40 hidden dark:block"
                 alt="The Wild Oasis logo"
             />
         </Link>

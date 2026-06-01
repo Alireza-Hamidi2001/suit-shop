@@ -19,7 +19,7 @@ async function SuitList({ filter }) {
     return (
         <>
             {hasDisplayedSuits ? (
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {displayedSuits.map((suit) => (
                         <SuitCard
                             suit={suit}

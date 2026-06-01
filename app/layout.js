@@ -32,10 +32,10 @@ export default function RootLayout({ children }) {
     return (
         <html
             lang="en"
-            className={`${lime.variable} ${comic.variable} ${caveat.variable} ${coiny.variable} ${openSans.variable} ${arizonia.variable} ${audioWide.variable} ${courgette.variable} ${kottaOne.variable}`}
+            className={`text-[62.5%] md:text-[75%] lg:text-[100%]  ${lime.variable} ${comic.variable} ${caveat.variable} ${coiny.variable} ${openSans.variable} ${arizonia.variable} ${audioWide.variable} ${courgette.variable} ${kottaOne.variable}`}
             suppressHydrationWarning>
             <body
-                className={`${openSans.className} bg-amber-50 dark:bg-zinc-950  flex flex-col min-h-screen`}>
+                className={`${openSans.className} bg-amber-50 dark:bg-zinc-950 flex flex-col min-h-screen`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
@@ -45,8 +45,8 @@ export default function RootLayout({ children }) {
                         <Suspense fallback={<Spinner />}>
                             <Header />
                         </Suspense>
-                        <div className="flex-1 px-8 py-12 grid">
-                            <main className="max-w-7xl mx-auto w-full rounded-lg">
+                        <div className="flex-1 grid">
+                            <main className="w-full px-4 sm:px-6 md:px-8 lg:px-10 py-10 sm:py-15 lg:py-20 max-w-7xl mx-auto">
                                 {children}
                             </main>
                         </div>

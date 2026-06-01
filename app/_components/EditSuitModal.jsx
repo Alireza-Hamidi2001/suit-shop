@@ -118,7 +118,6 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
             }`}
         >
             <div className="relative w-full max-w-2xl mx-4 flex flex-col rounded-lg bg-white dark:bg-zinc-900 text-black dark:text-white shadow-2xl">
-                {/* هدر مودال - ثابت */}
                 <div className="sticky top-0 bg-white dark:bg-zinc-900 z-10 flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-8 pt-6 pb-4 rounded-t-lg">
                     <div className="flex items-center gap-2">
                         <IoWarning className="h-8 w-8 error" />
@@ -202,7 +201,7 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                     required
                                 />
                             </div>
@@ -216,7 +215,7 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
                                     name="price"
                                     value={formData.price}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                     required
                                     step="0.01"
                                 />
@@ -231,7 +230,7 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
                                     name="discount"
                                     value={formData.discount}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                     step="0.01"
                                 />
                             </div>
@@ -245,7 +244,7 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
                                     name="fabric"
                                     value={formData.fabric}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                 />
                             </div>
 

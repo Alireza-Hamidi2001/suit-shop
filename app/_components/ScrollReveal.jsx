@@ -11,7 +11,7 @@ export default function ScrollReveal({
     className = "",
 }) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: false, margin: "-100px" });
+    const isInView = useInView(ref, { once: false, margin: "-120px" });
 
     const directionOffset = {
         left: { x: -50, y: 0 },

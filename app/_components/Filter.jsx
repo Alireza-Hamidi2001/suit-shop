@@ -49,8 +49,8 @@ function Button({ filter, handleFilter, activeFilter, children }) {
         <button
             onClick={() => handleFilter(filter)}
             className={`
-                font-comic text-sm font-medium tracking-wide
-                px-5 py-2 rounded-full transition-all duration-300
+                font-comic text-sm font-normal md:font-medium tracking-wide
+                px-2 py-1 md:px-4 md:py-2 rounded-full transition-all duration-300
                 ${
                     isActive
                         ? "bg-amber-600 text-white shadow-md shadow-amber-200 dark:shadow-amber-900/30 scale-105"

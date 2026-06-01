@@ -52,7 +52,7 @@ function DeleteSuitModal({
                     : "hidden"
             }`}
         >
-            <div className="relative flex flex-col justify-center gap-4 rounded-sm bg-white dark:bg-black text-black dark:text-white px-10 py-6 shadow-xl">
+            <div className="relative flex flex-col justify-center gap-4 rounded-sm bg-white dark:bg-zinc-900 text-black dark:text-white p-4 md:px-10 md:py-6 shadow-xl">
                 <h1 className="paragraph flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2">
                         <IoWarning className="h-8 w-8 error" />

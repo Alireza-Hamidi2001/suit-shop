@@ -24,9 +24,9 @@ export function ThemeToggle() {
             className="rounded-lg hover:scale-1.2 duration-200 transition-all"
         >
             {theme === "dark" ? (
-                <FiSun className="w-5 h-5" />
+                <FiSun className="w-10 h-10 md:w-5 md:h-5" />
             ) : (
-                <FaMoon className="w-5 h-5 text-black" />
+                <FaMoon className="w-10 h-10 md:w-5 md:h-5 text-black" />
             )}
         </button>
     );

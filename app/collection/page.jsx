@@ -17,7 +17,7 @@ export default async function Page({ searchParams }) {
 
     return (
         <>
-            <div className="max-w-7xl px-6 py-20">
+            <div className="w-full">
                 <ScrollReveal>
                     <div className="mb-16">
                         <span className="subHeading">&bull; Suitelier</span>

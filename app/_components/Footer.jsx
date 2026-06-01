@@ -14,9 +14,9 @@ function Footer() {
                 <div className="mx-auto mb-4">
                     <Logo />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
                     <div>
-                        <p className="paragraph">
+                        <p className="paragraph mb-0">
                             Premium suits for women and men. Timeless elegance,
                             modern tailoring.
                         </p>

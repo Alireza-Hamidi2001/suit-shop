@@ -168,7 +168,7 @@ export default function ProfileForm({ user }) {
                                     className="label"
                                     htmlFor="building_number"
                                 >
-                                    Building Number / Plaque *
+                                    Building Number*
                                 </label>
                                 <input
                                     type="text"

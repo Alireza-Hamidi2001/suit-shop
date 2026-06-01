@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FaMale, FaFemale } from "react-icons/fa";
+import { IoWarning } from "react-icons/io5";
 
 function CreateModalPost({ showCreateModal, setShowCreateModal }) {
     const router = useRouter();
@@ -111,8 +112,8 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                 {/* هدر مودال */}
                 <div className="sticky top-0 bg-white dark:bg-zinc-900 z-10 flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-8 pt-6 pb-4 rounded-t-lg">
                     <div className="flex items-center gap-2">
-                        <FaSave className="h-5 w-5 text-amber-600" />
-                        <h2 className="text-xl font-bold">Create New Suit</h2>
+                        <IoWarning className="h-8 w-8 error" />
+                        Create a new card
                     </div>
                     <button
                         onClick={() => setShowCreateModal(false)}

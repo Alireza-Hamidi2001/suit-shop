@@ -24,7 +24,7 @@ export default function Page() {
         <>
             <div className="max-w-7xl mx-auto px-6 py-20">
                 {/* ========== بخش اول ========== */}
-                <div className="flex flex-col lg:flex-row gap-16 items-center mb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 px-10 sm:px-0 gap-16 items-center mb-32">
                     <ScrollReveal
                         direction="left"
                         delay={0.1}
@@ -77,7 +77,7 @@ export default function Page() {
                     <ScrollReveal
                         direction="right"
                         delay={0.2}
-                        className="flex-1 relative image-shadow-light dark:image-shadow-dark aspect-[4/5] overflow-hidden"
+                        className="flex-1 relative image-shadow-light dark:image-shadow-dark aspect-4/5 overflow-hidden"
                     >
                         <Image
                             src={aboutImage1}
@@ -90,11 +90,27 @@ export default function Page() {
                 </div>
 
                 {/* ========== بخش دوم ========== */}
-                <div className="flex flex-col lg:flex-row-reverse gap-16 items-center mb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32">
+                    {/* عکس - در ستون اول (چپ) */}
+                    <ScrollReveal
+                        direction="left"
+                        delay={0.2}
+                        className="relative image-shadow-light dark:image-shadow-dark aspect-4/5 overflow-hidden rounded-xl order-1 md:order-1"
+                    >
+                        <Image
+                            src={aboutImage2}
+                            fill
+                            className="object-cover hover:scale-105 transition duration-700"
+                            placeholder="blur"
+                            alt="Suitelier tailoring team at work"
+                        />
+                    </ScrollReveal>
+
+                    {/* متن - در ستون دوم (راست) */}
                     <ScrollReveal
                         direction="right"
                         delay={0.1}
-                        className="flex-1 space-y-6"
+                        className="space-y-6 order-2 md:order-2"
                     >
                         <div className="inline-block">
                             <span className="subHeading">
@@ -150,20 +166,6 @@ export default function Page() {
                             </button>
                         </div>
                     </ScrollReveal>
-
-                    <ScrollReveal
-                        direction="left"
-                        delay={0.2}
-                        className="flex-1 relative image-shadow-light dark:image-shadow-dark aspect-[4/5] overflow-hidden"
-                    >
-                        <Image
-                            src={aboutImage2}
-                            fill
-                            className="object-cover hover:scale-105 transition duration-700"
-                            placeholder="blur"
-                            alt="Suitelier tailoring team at work"
-                        />
-                    </ScrollReveal>
                 </div>
 
                 {/* ========== بخش سوم ========== */}
@@ -171,9 +173,9 @@ export default function Page() {
                     direction="up"
                     delay={0.1}
                 >
-                    <div className="bg-amber-100 dark:bg-zinc-900 p-12 lg:p-16 rounded-2xl">
+                    <div className="bg-amber-100 dark:bg-zinc-900 p-4 md:p-8 lg:p-12  rounded-2xl">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            <div className="lg:order-2 relative image-shadow-light dark:image-shadow-dark aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
+                            <div className="lg:order-2 relative image-shadow-light dark:image-shadow-dark aspect-4/3 overflow-hidden rounded-xl shadow-lg">
                                 <div className="absolute inset-0 bg-black/20 z-10 rounded-xl"></div>
                                 <Image
                                     src={aboutImage3}
@@ -251,24 +253,24 @@ export default function Page() {
 
                                 <div className="grid grid-cols-3 gap-4 pt-4">
                                     <div className="text-center">
-                                        <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                                            <HiCheck className="w-6 h-6 text-white" />
+                                        <div className="w-20 h-20 md:w-15 md:h-15 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                                            <HiCheck className="w-15 h-15 md:w-12 md:h-12 text-white" />
                                         </div>
                                         <p className="text-xs font-medium">
                                             Quality Checked
                                         </p>
                                     </div>
                                     <div className="text-center">
-                                        <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                                            <TbArrowsExchange className="w-6 h-6 text-white" />
+                                        <div className="w-20 h-20 md:w-15 md:h-15 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                                            <TbArrowsExchange className="w-15 h-15 md:w-12 md:h-12 text-white" />
                                         </div>
                                         <p className="text-xs font-medium">
                                             14 Days Return
                                         </p>
                                     </div>
                                     <div className="text-center">
-                                        <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                                            <FaCut className="w-6 h-6 text-white" />
+                                        <div className="w-20 h-20 md:w-15 md:h-15 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                                            <FaCut className="w-13 h-13 md:w-10 md:h-10 text-white" />
                                         </div>
                                         <p className="text-xs font-medium">
                                             Free Alterations

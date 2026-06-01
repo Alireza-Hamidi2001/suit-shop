@@ -24,7 +24,7 @@ async function page({ searchParams }) {
                             className="flex flex-col gap-4 relative py-4 px-8 border-2 border-amber-200 dark:border-zinc-800 bg-amber-100 dark:bg-zinc-800"
                         >
                             <BtnEditHandler suit={suit} />
-                            <div className="w-32 h-32 relative">
+                            <div className="w-48 h-48 sm:w-32 sm:h-32 relative">
                                 <Image
                                     alt={suit.name}
                                     className="object-cover rounded-full"
@@ -69,7 +69,7 @@ async function page({ searchParams }) {
                                     </span>
                                     {suit.category === "male" ? "Men" : "Women"}
                                 </p>
-                                <p className="col-span-2 md:col-span-3 lg:col-span-6">
+                                <p className="col-span-6">
                                     <span className="font-bold italic font-comic">
                                         description : <br />
                                     </span>

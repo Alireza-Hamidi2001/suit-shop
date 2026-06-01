@@ -39,8 +39,7 @@ export default function NavLinks({ user: initialUser, session }) {
     const isLoggedIn = hasSession || hasCustomUser;
 
     return (
-        <ul className="flex gap-8 items-center">
-            {/* منوهای اصلی */}
+        <ul className="hidden lg:flex lg:gap-8 lg:items-center">
             {mainMenus.map(({ label, href, Icon }) => {
                 const active = isActive(href);
                 return (
@@ -65,7 +64,6 @@ export default function NavLinks({ user: initialUser, session }) {
                 );
             })}
 
-            {/* بخش کاربر (لاگین شده) - بدون دکمه خروج */}
             {isLoggedIn ? (
                 <li>
                     <Link

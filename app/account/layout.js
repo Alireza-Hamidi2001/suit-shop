@@ -17,7 +17,7 @@ async function Layout({ children }) {
 
     return (
         <>
-            <div className="h-[92vh] text-cyan-950 dark:text-cyan-100 grid grid-cols-[16rem_1fr] mb-24 max-h-full gap-12">
+            <div className="h-[92vh] sm:h-[90vh] text-cyan-950 dark:text-cyan-100 grid grid-cols-[auto_1fr] md:grid-cols-[16rem_1fr] mb-24 max-h-full gap-4 sm:gap-8 md:gap-12">
                 <div>
                     <SideNavigation
                         user={user}
