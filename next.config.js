@@ -9,20 +9,12 @@ const nextConfig = {
                 port: "",
                 pathname: "/storage/v1/object/public/cabin-images/**",
             },
-            // ✅ اضافه کردن میزبان تصاویر Google Avatar
             {
                 protocol: "https",
                 hostname: "lh3.googleusercontent.com",
                 port: "",
-                pathname: "/**", // اجازه همه مسیرها
+                pathname: "/**",
             },
-            // ✅ (اختیاری) برای تصاویر GitHub
-            // {
-            //     protocol: "https",
-            //     hostname: "avatars.githubusercontent.com",
-            //     port: "",
-            //     pathname: "/**",
-            // },
         ],
     },
     experimental: {
@@ -30,4 +22,4 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
