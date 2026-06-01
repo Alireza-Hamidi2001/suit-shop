@@ -1,8 +1,8 @@
 // app/about/page.js
 import Link from "next/link";
-import aboutImage1 from "@/public/suits/cabin-001.jpg";
-import aboutImage2 from "@/public/suits/cabin-002.jpg";
-import aboutImage3 from "@/public/suits/cabin-003.jpg";
+import aboutImage1 from "@/public/suits/about-001.png";
+import aboutImage2 from "@/public/suits/about-002.png";
+import aboutImage3 from "@/public/suits/about-003.png";
 
 import { HiCheck } from "react-icons/hi";
 import { FaCut } from "react-icons/fa";
@@ -82,7 +82,7 @@ export default function Page() {
                         <Image
                             src={aboutImage1}
                             fill
-                            className="object-cover hover:scale-105 transition duration-700"
+                            className="object-cover hover:scale-105 transition duration-700 rounded-lg"
                             placeholder="blur"
                             alt="Luxury suits collection at Suitelier"
                         />
@@ -90,7 +90,7 @@ export default function Page() {
                 </div>
 
                 {/* ========== بخش دوم ========== */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 px-10 sm:px-0 gap-16 items-center mb-32">
                     {/* عکس - در ستون اول (چپ) */}
                     <ScrollReveal
                         direction="left"
@@ -176,7 +176,7 @@ export default function Page() {
                     <div className="bg-amber-100 dark:bg-zinc-900 p-4 md:p-8 lg:p-12  rounded-2xl">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             <div className="lg:order-2 relative image-shadow-light dark:image-shadow-dark aspect-4/3 overflow-hidden rounded-xl shadow-lg">
-                                <div className="absolute inset-0 bg-black/20 z-10 rounded-xl"></div>
+                                <div className="absolute inset-0 bg-black/20 z-10 rounded-lg"></div>
                                 <Image
                                     src={aboutImage3}
                                     fill
