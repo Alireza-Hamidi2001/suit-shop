@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { GiClick } from "react-icons/gi";
-import main_dark from "@/public/main-dark.jpg";
-import main_light from "@/public/main-light.png";
+import main from "@/public/main.png";
 import Image from "next/image";
 import ScrollReveal from "./_components/ScrollReveal";
 
 export default function Home() {
     return (
         <main className="">
+            {/* <Image fill src={main} className="object-cover" /> */}
             <div className="absolute font-lime text-6xl  left-16 bottom-16 w-[50%]">
                 <ScrollReveal direction="right" className="flex-1 space-y-6">
                     <h1 className="bg-dark text-black dark:text-white">
