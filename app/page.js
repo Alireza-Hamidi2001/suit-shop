@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { GiClick } from "react-icons/gi";
 import main from "@/public/main.png";
-import Image from "next/image";
 import ScrollReveal from "./_components/ScrollReveal";
 
 export default function Home() {
     return (
         <main className="">
-            {/* <Image fill src={main} className="object-cover" /> */}
-            <div className="absolute font-lime text-6xl  left-16 bottom-16 w-[80%] md:w-[60%] lg:w-[50%]">
+            <div className="absolute font-lime text-6xl  left-4 bottom-50 sm:left-16 sm:bottom-16 w-[90%] md:w-[60%] lg:w-[50%]">
                 <ScrollReveal direction="right" className="flex-1 space-y-6">
                     <h1 className="bg-dark text-black dark:text-white">
                         Timeless Elegance, Tailored for You
