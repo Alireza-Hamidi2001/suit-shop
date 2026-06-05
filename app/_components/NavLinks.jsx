@@ -19,11 +19,9 @@ export default function NavLinks({ user: initialUser, session }) {
         { label: "About", href: "/about", Icon: FaInfoCircle },
     ];
 
-    // تعیین اینکه از کدام روش استفاده کنه (اولویت با session از NextAuth)
     const hasSession = session?.user !== null && session?.user !== undefined;
     const hasCustomUser = initialUser !== null && initialUser !== undefined;
 
-    // اطلاعات نهایی برای نمایش
     const displayName = hasSession
         ? session.user.name
         : hasCustomUser

@@ -1,6 +1,6 @@
 // app/api/auth/register/route.js
 import { NextResponse } from "next/server";
-import { query } from "@/lib/mysql";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request) {
     try {
@@ -15,31 +15,46 @@ export async function POST(request) {
         }
 
         // ✅ بررسی ایمیل تکراری
-        const existingUser = await query(
-            "SELECT id FROM users WHERE email = ?",
-            [email],
-        );
+        const { data: existingUser, error: checkError } = await supabase
+            .from("users")
+            .select("id")
+            .eq("email", email)
+            .single();
 
-        if (existingUser.length > 0) {
+        if (existingUser) {
             return NextResponse.json(
                 { error: "Email already exists" },
                 { status: 409 },
             );
         }
 
-        // ✅ ذخیره در دیتابیس (نقش = 'user' نه 'guest')
-        const result = await query(
-            `INSERT INTO users (fullname, email, password, phone, role, created_at) 
-            VALUES (?, ?, ?, ?, 'user', NOW())`, // ✅ تغییر: 'guest' → 'user'
-            [fullname, email, password, phone || null],
-        );
+        // ✅ ذخیره در Supabase
+        const { data: newUser, error: insertError } = await supabase
+            .from("users")
+            .insert([
+                {
+                    fullname,
+                    email,
+                    password,
+                    phone: phone || null,
+                    role: "user",
+                    created_at: new Date().toISOString(),
+                },
+            ])
+            .select()
+            .single();
+
+        if (insertError) {
+            console.error("Supabase insert error:", insertError);
+            throw insertError;
+        }
 
         // ✅ پاسخ موفقیت
         return NextResponse.json(
             {
                 success: true,
                 message: "User created successfully",
-                userId: result.insertId,
+                userId: newUser.id,
             },
             { status: 201 },
         );

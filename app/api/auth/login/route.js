@@ -8,17 +8,16 @@ export async function POST(request) {
 
         if (!email || !password) {
             return NextResponse.json(
-                { error: "Email and password are required." },
+                { error: "Email and password are required" },
                 { status: 400 },
             );
         }
 
-        // ✅ اضافه کردن await (چون getUserByCredentials الان async است)
         const user = await getUserByCredentials(email, password);
 
         if (!user) {
             return NextResponse.json(
-                { error: "Invalid email or password." },
+                { error: "Invalid email or password" },
                 { status: 401 },
             );
         }

@@ -5,7 +5,7 @@ function loading() {
     return (
         <div className="grid justify-center items-center">
             <Spinner />
-            <p>Loading cabins ...</p>
+            <p>Loading...</p>
         </div>
     );
 }
