@@ -132,9 +132,7 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
                     </button>
                 </div>
 
-                {/* محتوای قابل اسکرول */}
                 <div className="px-8 pb-6 max-h-[70vh] overflow-y-auto">
-                    {/* بخش عکس */}
                     <div className="flex flex-col items-center justify-center py-4 border-b border-gray-200 dark:border-gray-700">
                         <div className="relative w-40 h-40 rounded-full overflow-hidden bg-gray-100 dark:bg-zinc-800 border-4 border-amber-200 dark:border-amber-800">
                             {imagePreview ? (
@@ -186,7 +184,6 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
                         </p>
                     </div>
 
-                    {/* فرم */}
                     <form
                         onSubmit={handleSubmit}
                         className="space-y-4 pt-4"
@@ -252,21 +249,28 @@ function EditSuitModal({ showModal, setShowModal, suit, onUpdate }) {
                                 <label className="block text-sm font-medium mb-1">
                                     Category
                                 </label>
-                                <select
-                                    name="category"
-                                    value={formData.category}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
-                                >
-                                    <option value="male">
-                                        <FaMale className="w-3 h-3 text-red-400" />{" "}
-                                        Men (Gentlemen)
-                                    </option>
-                                    <option value="female">
-                                        <FaFemale className="w-3 h-3 text-red-400" />{" "}
-                                        Women (Ladies)
-                                    </option>
-                                </select>
+                                <div className="relative">
+                                    <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-10">
+                                        {formData.category === "male" ? (
+                                            <FaMale className="w-4 h-4 text-blue-500" />
+                                        ) : (
+                                            <FaFemale className="w-4 h-4 text-pink-500" />
+                                        )}
+                                    </div>
+                                    <select
+                                        name="category"
+                                        value={formData.category}
+                                        onChange={handleChange}
+                                        className="w-full pl-10 pr-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none appearance-none"
+                                    >
+                                        <option value="male">
+                                            Men (Gentlemen)
+                                        </option>
+                                        <option value="female">
+                                            Women (Ladies)
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div className="col-span-2">

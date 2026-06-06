@@ -60,11 +60,16 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
         const loadingToast = toast.loading("Creating new suit...");
 
         try {
+            console.log("1. Starting creation...");
+
             let imageUrl = null;
             if (selectedFile) {
+                console.log("2. Uploading image...");
                 imageUrl = await uploadImage();
+                console.log("3. Image uploaded:", imageUrl);
             }
 
+            console.log("4. Sending data to API...");
             const res = await fetch("/api/admin/suits", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -72,6 +77,7 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
             });
 
             const data = await res.json();
+            console.log("5. API response:", { ok: res.ok, data });
 
             if (!res.ok) {
                 throw new Error(data.error || "Creation failed");
@@ -82,6 +88,7 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                 duration: 3000,
             });
 
+            console.log("6. Success! Resetting form...");
             setFormData({
                 name: "",
                 price: "",
@@ -92,18 +99,20 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
             });
             setImagePreview(null);
             setSelectedFile(null);
+
+            console.log("7. Closing modal and refreshing...");
+            setIsLoading(false);
             setShowCreateModal(false);
             router.refresh();
         } catch (error) {
+            console.error("ERROR in handleSubmit:", error);
             toast.error(error.message, {
                 id: loadingToast,
                 duration: 4000,
             });
-        } finally {
             setIsLoading(false);
         }
     };
-
     if (!showCreateModal) return null;
 
     return (
@@ -185,7 +194,7 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                     >
                         <div className="grid grid-cols-2 gap-4">
                             <div className="col-span-2">
-                                <label className="block text-sm font-medium mb-1">
+                                <label className="label">
                                     Suit Name *
                                 </label>
                                 <input
@@ -193,13 +202,13 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                     required
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">
+                                <label className="label">
                                     Price ($) *
                                 </label>
                                 <input
@@ -207,14 +216,14 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                                     name="price"
                                     value={formData.price}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                     required
                                     step="0.01"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">
+                                <label className="label">
                                     Discount (%)
                                 </label>
                                 <input
@@ -222,13 +231,13 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                                     name="discount"
                                     value={formData.discount}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                     step="0.01"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">
+                                <label className="label">
                                     Fabric
                                 </label>
                                 <input
@@ -236,12 +245,12 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                                     name="fabric"
                                     value={formData.fabric}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-1">
+                                <label className="label">
                                     Category
                                 </label>
                                 <div className="relative">
@@ -269,7 +278,7 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                             </div>
 
                             <div className="col-span-2">
-                                <label className="block text-sm font-medium mb-1">
+                                <label className="label">
                                     Description
                                 </label>
                                 <textarea
@@ -277,7 +286,7 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                                     value={formData.description}
                                     onChange={handleChange}
                                     rows="4"
-                                    className="w-full px-3 py-2 border rounded-lg dark:bg-zinc-800 dark:border-zinc-700 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                                    className="input"
                                 />
                             </div>
                         </div>
@@ -286,7 +295,7 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                             <button
                                 type="button"
                                 onClick={() => setShowCreateModal(false)}
-                                className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+                                className="px-4 py-2 rounded text-sm tracking-wide border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
                                 disabled={isLoading}
                             >
                                 Cancel
@@ -294,9 +303,9 @@ function CreateModalPost({ showCreateModal, setShowCreateModal }) {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="px-4 py-2 rounded-lg bg-amber-600 text-white hover:bg-amber-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+                                className="px-4 py-2 disabled:cursor-not-allowed rounded bg-teal-600 tracking-wide text-sm text-white hover:bg-teal-700 transition-colors disabled:opacity-50 flex items-center gap-2"
                             >
-                                <FaSave className="w-4 h-4" />
+                                <FaSave className="w-3 h-3" />
                                 {isLoading ? "Creating..." : "Create Suit"}
                             </button>
                         </div>
