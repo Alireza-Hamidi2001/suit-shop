@@ -1,64 +1,12 @@
 // app/api/user/avatar/route.js
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
-import { query } from "@/lib/mysql";
+import { supabase } from "@/lib/supabase";
 import { getCurrentUser } from "@/lib/auth";
-
-
-export async function DELETE(request) {
-    try {
-        const user = await getCurrentUser();
-
-        if (!user) {
-            return NextResponse.json(
-                { error: "Unauthorized" },
-                { status: 401 },
-            );
-        }
-
-        // دریافت آواتار فعلی کاربر
-        const rows = await query("SELECT avatar FROM users WHERE id = ?", [
-            user.id,
-        ]);
-
-        const currentAvatar = rows[0]?.avatar;
-
-        // حذف فایل از دیسک (اگر وجود داشته باشد)
-        if (currentAvatar) {
-            try {
-                const filepath = path.join(
-                    process.cwd(),
-                    "public",
-                    currentAvatar,
-                );
-                await unlink(filepath);
-            } catch (err) {
-                console.log("File not found or already deleted:", err.message);
-            }
-        }
-
-        // آپدیت دیتابیس: ست کردن avatar به NULL
-        await query("UPDATE users SET avatar = NULL WHERE id = ?", [user.id]);
-
-        return NextResponse.json({
-            success: true,
-            message: "Avatar deleted successfully",
-        });
-    } catch (error) {
-        console.error("Avatar delete error:", error);
-        return NextResponse.json(
-            { error: "Internal server error" },
-            { status: 500 },
-        );
-    }
-}
 
 export async function POST(request) {
     try {
-        // 1. دریافت کاربر فعلی (برای احراز هویت)
         const user = await getCurrentUser();
-
+        console.log("Current user:", user);
         if (!user) {
             return NextResponse.json(
                 { error: "Unauthorized" },
@@ -66,7 +14,6 @@ export async function POST(request) {
             );
         }
 
-        // 2. دریافت فایل از FormData
         const formData = await request.formData();
         const file = formData.get("avatar");
 
@@ -77,7 +24,6 @@ export async function POST(request) {
             );
         }
 
-        // 3. بررسی نوع فایل
         if (!file.type.startsWith("image/")) {
             return NextResponse.json(
                 { error: "Only image files are allowed" },
@@ -85,47 +31,113 @@ export async function POST(request) {
             );
         }
 
-        // 4. تبدیل فایل به بافر
+        // تبدیل فایل به ArrayBuffer
         const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
+        const buffer = new Uint8Array(bytes);
 
-        // 5. ایجاد نام یکتا برای فایل
-        const ext = path.extname(file.name);
-        const filename = `${user.id}-${Date.now()}${ext}`;
-        const uploadDir = path.join(process.cwd(), "public/uploads/avatars");
-        const filepath = path.join(uploadDir, filename);
+        // نام یکتا برای فایل
+        const ext = file.name.split(".").pop();
+        const fileName = `${user.id}-${Date.now()}.${ext}`;
+        const filePath = `${fileName}`; // مسیر در Bucket (بدون پوشه اضافه)
 
-        // 6. ایجاد پوشه اگر وجود ندارد
-        await mkdir(uploadDir, { recursive: true });
+        // آپلود به Supabase Storage (Bucket "avatars")
+        const { data, error: uploadError } = await supabase.storage
+            .from("avatars")
+            .upload(filePath, buffer, {
+                contentType: file.type,
+                cacheControl: "3600",
+                upsert: false,
+            });
 
-        // 7. ذخیره فایل در دیسک
-        await writeFile(filepath, buffer);
+        if (uploadError) {
+            console.error("Upload error:", uploadError);
+            throw new Error(uploadError.message);
+        }
 
-        // 8. آدرس عمومی عکس
-        const avatarUrl = `/uploads/avatars/${filename}`;
+        // دریافت URL عمومی
+        const {
+            data: { publicUrl },
+        } = supabase.storage.from("avatars").getPublicUrl(filePath);
 
-        // 9. ذخیره مسیر در دیتابیس
-        await query("UPDATE users SET avatar = ? WHERE id = ?", [
-            avatarUrl,
-            user.id,
-        ]);
+        // به‌روز رسانی فیلد avatar در جدول users (Supabase)
+        const { error: updateError } = await supabase
+            .from("users")
+            .update({ avatar: publicUrl })
+            .eq("id", user.id);
 
-        // 10. پاسخ موفقیت
+        if (updateError) {
+            console.error("Update error:", updateError);
+            throw new Error(updateError.message);
+        }
+
         return NextResponse.json({
             success: true,
-            avatarUrl,
+            avatarUrl: publicUrl,
             message: "Avatar updated successfully",
         });
     } catch (error) {
         console.error("Avatar upload error:", error);
         return NextResponse.json(
-            { error: "Internal server error" },
+            { error: error.message || "Internal server error" },
             { status: 500 },
         );
     }
 }
 
-// (اختیاری) GET برای دریافت آواتار
+export async function DELETE(request) {
+    try {
+        const user = await getCurrentUser();
+        if (!user) {
+            return NextResponse.json(
+                { error: "Unauthorized" },
+                { status: 401 },
+            );
+        }
+
+        // دریافت avatar فعلی از دیتابیس
+        const { data: userData, error: fetchError } = await supabase
+            .from("users")
+            .select("avatar")
+            .eq("id", user.id)
+            .single();
+
+        if (fetchError) throw new Error(fetchError.message);
+
+        const avatarUrl = userData?.avatar;
+        if (avatarUrl) {
+            // استخراج نام فایل از URL (فرض می‌کنیم URL مثل .../avatars/filename.ext)
+            const fileName = avatarUrl.split("/").pop();
+            if (fileName) {
+                // حذف فایل از Storage
+                const { error: deleteError } = await supabase.storage
+                    .from("avatars")
+                    .remove([fileName]);
+                if (deleteError)
+                    console.error("Storage delete error:", deleteError);
+            }
+        }
+
+        // به‌روز رسانی avatar به NULL در دیتابیس
+        const { error: updateError } = await supabase
+            .from("users")
+            .update({ avatar: null })
+            .eq("id", user.id);
+
+        if (updateError) throw new Error(updateError.message);
+
+        return NextResponse.json({
+            success: true,
+            message: "Avatar deleted successfully",
+        });
+    } catch (error) {
+        console.error("Avatar delete error:", error);
+        return NextResponse.json(
+            { error: error.message || "Internal server error" },
+            { status: 500 },
+        );
+    }
+}
+
 export async function GET(request) {
     try {
         const { searchParams } = new URL(request.url);
@@ -138,17 +150,19 @@ export async function GET(request) {
             );
         }
 
-        const rows = await query("SELECT avatar FROM users WHERE id = ?", [
-            userId,
-        ]);
+        const { data, error } = await supabase
+            .from("users")
+            .select("avatar")
+            .eq("id", userId)
+            .single();
 
-        return NextResponse.json({
-            avatar: rows[0]?.avatar || null,
-        });
+        if (error) throw new Error(error.message);
+
+        return NextResponse.json({ avatar: data?.avatar || null });
     } catch (error) {
         console.error("Get avatar error:", error);
         return NextResponse.json(
-            { error: "Internal server error" },
+            { error: error.message || "Internal server error" },
             { status: 500 },
         );
     }

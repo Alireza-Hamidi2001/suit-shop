@@ -14,7 +14,6 @@ export default async function Page() {
         redirect("/login");
     }
 
-    // ✅ برای دیباگ - توی ترمینال ببین user چی داره
     console.log("User in profile page:", user);
 
     return <ProfileForm user={user} />;

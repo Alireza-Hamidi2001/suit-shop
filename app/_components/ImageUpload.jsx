@@ -74,6 +74,7 @@ export default function ImageUpload({ currentImage = null, userId }) {
         const loadingToast = toast.loading("Deleting avatar...");
 
         try {
+            console.log("UserId in ImageUpload:", userId);
             const res = await fetch(`/api/user/avatar?userId=${userId}`, {
                 method: "DELETE",
             });

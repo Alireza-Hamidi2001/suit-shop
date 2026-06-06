@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GiClick } from "react-icons/gi";
-import main from "@/public/main.png";
 import ScrollReveal from "./_components/ScrollReveal";
 
 export default function Home() {
