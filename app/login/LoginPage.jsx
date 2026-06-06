@@ -132,10 +132,14 @@ export default function LoginPage() {
                 </button>
 
                 <Link
-                    className="flex items-center justify-center text-[0.8rem] col-span-2"
+                    className="tracking-wide flex gap-2 items-center justify-center text-[0.8rem] col-span-2"
                     href="/signup"
                 >
-                    Don&apos;t have an account yet ? Sign up
+                    Don&apos;t have an account yet ?{" "}
+                    <span className="font-courgette text-[1rem] tracking-wider">
+                        {" "}
+                        Sign up &rarr;{" "}
+                    </span>
                 </Link>
             </form>
         </div>

@@ -131,7 +131,7 @@ function StaticSuitInfo({ suit, suitId, user }) {
             </div>
 
             <div>
-                <h1 className="title text-4xl bg-amber-50 dark:bg-zinc-950 rounded-sm -translate-x-46 p-6 w-[120%] lg:text-5xl mb-4">
+                <h1 className="title text-4xl bg-amber-50 dark:bg-zinc-950 rounded-sm lg:-translate-x-46 p-6 w-[120%] lg:text-5xl mb-4">
                     <ScrollReveal direction="right">{name}</ScrollReveal>
                 </h1>
                 <StaggerContainer>

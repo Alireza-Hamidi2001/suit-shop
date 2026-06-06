@@ -8,9 +8,9 @@ function Footer() {
     return (
         <footer className="relative bg-amber-50 dark:bg-zinc-950 pt-8 mt-16">
             <div className="max-w-7xl grid gap-4 mx-auto px-6">
-                <span className="bubbleAnimation1  w-16 h-16 absolute rounded-full bg-amber-500/15 dark:bg-zinc-900/40 left-[40%] -translate-x-1/2 top-[4rem] animate-bounce-slow"></span>{" "}
-                <span className="bubbleAnimation2  w-12 h-12 absolute rounded-full bg-amber-500/15 dark:bg-zinc-900/40 left-[20%] -translate-x-1/2 bottom-0 animate-bounce-slow"></span>{" "}
-                <span className="bubbleAnimation3  w-6 h-6 absolute rounded-full bg-amber-500/15 dark:bg-zinc-900/40 left-[70%] -translate-x-2/3 bottom-0 animate-bounce-slow"></span>{" "}
+                <span className="bubbleAnimation1  w-16 h-16 absolute rounded-full bg-amber-500/15 dark:bg-zinc-800/40 left-[40%] -translate-x-1/2 top-[8rem] animate-bounce-slow"></span>{" "}
+                <span className="bubbleAnimation2  w-12 h-12 absolute rounded-full bg-amber-500/15 dark:bg-zinc-800/40 left-[20%] -translate-x-1/2 bottom-0 animate-bounce-slow"></span>{" "}
+                <span className="bubbleAnimation3  w-6 h-6 absolute rounded-full bg-amber-500/15 dark:bg-zinc-800/40 left-[70%] -translate-x-2/3 bottom-0 animate-bounce-slow"></span>{" "}
                 <div className="mx-auto mb-4">
                     <Logo />
                 </div>
