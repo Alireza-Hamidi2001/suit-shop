@@ -14,10 +14,11 @@ export const metadata = {
 export default async function Page({ searchParams }) {
     const resolvedSearchParams = await searchParams;
     const filter = resolvedSearchParams?.category ?? "all";
+    const page = parseInt(resolvedSearchParams?.page) || 1;
 
     return (
         <>
-            <div className="w-full">
+            <div className="max-w-7xl mx-auto px-6 py-20">
                 <ScrollReveal>
                     <div className="mb-16">
                         <span className="subHeading">&bull; Suitelier</span>
@@ -33,13 +34,17 @@ export default async function Page({ searchParams }) {
                         </p>
                     </div>
                 </ScrollReveal>
+
                 <Filter />
 
                 <Suspense
+                    key={`${filter}-${page}`}
                     fallback={<Spinner />}
-                    key={filter}
                 >
-                    <SuitList filter={filter} />
+                    <SuitList
+                        filter={filter}
+                        page={page}
+                    />
                 </Suspense>
             </div>
             <Footer />

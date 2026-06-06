@@ -8,6 +8,14 @@ function Filter() {
     const pathName = usePathname();
     const activeFilter = searchParams.get("category") ?? "all";
 
+    const filterItems = [
+        { id: 1, name: "All suits", filter: "all" },
+        { id: 2, name: "Gentlemen", filter: "male" },
+        { id: 3, name: "Ladies", filter: "female" },
+        { id: 4, name: "Palto", filter: "palto" },
+        { id: 5, name: "Shirt", filter: "shirt" },
+        { id: 6, name: "Vest", filter: "vest" },
+    ];
     function handleFilter(filter) {
         console.log(filter);
         const params = new URLSearchParams(searchParams);
@@ -17,27 +25,16 @@ function Filter() {
 
     return (
         <div className="flex items-center gap-2 p-1 bg-amber-50 dark:bg-zinc-900 rounded-full shadow-md border border-amber-200 dark:border-zinc-700 w-fit mb-8">
-            <Button
-                filter="all"
-                handleFilter={handleFilter}
-                activeFilter={activeFilter}
-            >
-                All suits
-            </Button>
-            <Button
-                filter="male"
-                handleFilter={handleFilter}
-                activeFilter={activeFilter}
-            >
-                Gentlemen
-            </Button>
-            <Button
-                filter="female"
-                handleFilter={handleFilter}
-                activeFilter={activeFilter}
-            >
-                Ladies
-            </Button>
+            {filterItems.map((filterItem) => (
+                <Button
+                    key={filterItem.id}
+                    filter={filterItem.filter}
+                    handleFilter={handleFilter}
+                    activeFilter={activeFilter}
+                >
+                    {filterItem.name}
+                </Button>
+            ))}
         </div>
     );
 }

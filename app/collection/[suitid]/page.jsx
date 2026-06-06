@@ -1,4 +1,4 @@
-// app/collection/[id]/page.js
+// app/collection/[suitid]/page.js
 // صفحه نمایش جزئیات یک محصول (کت شلوار) بر اساس آیدی
 
 import { Suspense } from "react";
