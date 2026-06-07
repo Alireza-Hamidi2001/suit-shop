@@ -50,7 +50,7 @@ export default async function AccountPage() {
                                 src={avatar}
                                 alt={user.name}
                                 fill
-                                className="object-cover rounded-full"
+                                className="object-top rounded-full"
                             />
                         </div>
                     )}
