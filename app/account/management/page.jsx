@@ -46,49 +46,55 @@ async function ManagementPage({ searchParams }) {
                                 >
                                     <BtnEditHandler suit={suit} />
 
-                                    <div className="grid grid-cols-2 gap-8 items-center justify-center">
-                                        <div className="w-68 h-68 relative">
+                                    <div className="grid grid-cols-1  sm:grid-cols-3 gap-8 sm:gap-2 items-center justify-center">
+                                        <div className="relative w-64 h-64 sm:w-58 sm:h-58">
                                             <Image
                                                 alt={suit.name}
-                                                className="object-cover rounded-full"
+                                                className="rounded-full object-cover"
                                                 fill
                                                 src={suit.image}
                                             />
                                         </div>
-                                        <div className="grid grid-cols-3 gap-4">
+                                        <div className="grid grid-cols-3 gap-4 col-span-2">
                                             <p className="paragraph">
                                                 <span className="label text-teal-800 dark:text-teal-500">
-                                                    Suit id<br />
+                                                    Suit id
+                                                    <br />
                                                 </span>
                                                 {suit.id}
                                             </p>
                                             <p className="paragraph">
                                                 <span className="label text-teal-800 dark:text-teal-500">
-                                                    Suit name<br />
+                                                    Suit name
+                                                    <br />
                                                 </span>
                                                 {suit.name}
                                             </p>
                                             <p className="paragraph">
                                                 <span className="label text-teal-800 dark:text-teal-500">
-                                                    price<br />
+                                                    price
+                                                    <br />
                                                 </span>
                                                 ${suit.price}
                                             </p>
                                             <p className="paragraph">
                                                 <span className="label text-teal-800 dark:text-teal-500">
-                                                    discount<br />
+                                                    discount
+                                                    <br />
                                                 </span>
                                                 {suit.discount}%
                                             </p>
                                             <p className="paragraph">
                                                 <span className="label text-teal-800 dark:text-teal-500">
-                                                    fabric<br />
+                                                    fabric
+                                                    <br />
                                                 </span>
                                                 {suit.fabric}
                                             </p>
                                             <p className="paragraph">
                                                 <span className="label text-teal-800 dark:text-teal-500">
-                                                    category<br />
+                                                    category
+                                                    <br />
                                                 </span>
                                                 {suit.category === "male"
                                                     ? "Men"
@@ -97,7 +103,8 @@ async function ManagementPage({ searchParams }) {
                                         </div>
                                         <p className="col-span-2 md:col-span-3 lg:col-span-6 paragraph text-sm">
                                             <span className="label text-teal-800 dark:text-teal-500">
-                                                description<br />
+                                                description
+                                                <br />
                                             </span>
                                             {suit.description}
                                         </p>
