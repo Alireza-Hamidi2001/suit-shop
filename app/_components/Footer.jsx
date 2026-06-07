@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { FaTelegram, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import Logo from "./Logo";
+import { StaggerContainer, StaggerItem } from "./StaggerWrapper";
 
 function Footer() {
     return (
@@ -15,78 +16,103 @@ function Footer() {
                     <Logo />
                 </div>
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
-                    <div>
-                        <p className="paragraph mb-0">
-                            Premium suits for women and men. Timeless elegance,
-                            modern tailoring.
-                        </p>
-                    </div>
+                    <StaggerContainer delay={0.1}>
+                        <div>
+                            <StaggerItem>
+                                <p className="paragraph mb-0">
+                                    Premium suits for women and men. Timeless
+                                    elegance, modern tailoring.
+                                </p>
+                            </StaggerItem>
+                        </div>
+                    </StaggerContainer>
                     <div>
                         <h3 className="subHeading mb-4">&mdash; Quick Links</h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <Link
-                                    href="/"
-                                    className="navigation"
-                                >
-                                    &bull; Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/suits"
-                                    className="navigation"
-                                >
-                                    &bull; Collection
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/about"
-                                    className="navigation"
-                                >
-                                    &bull; About Us
-                                </Link>
-                            </li>
-                        </ul>
+                        <StaggerContainer delay={0.3}>
+                            <ul className="space-y-2">
+                                <StaggerItem>
+                                    <li>
+                                        <Link
+                                            href="/"
+                                            className="navigation"
+                                        >
+                                            &bull; Home
+                                        </Link>
+                                    </li>
+                                </StaggerItem>
+                                <StaggerItem>
+                                    <li>
+                                        <Link
+                                            href="/suits"
+                                            className="navigation"
+                                        >
+                                            &bull; Collection
+                                        </Link>
+                                    </li>
+                                </StaggerItem>
+                                <StaggerItem>
+                                    <li>
+                                        <Link
+                                            href="/about"
+                                            className="navigation"
+                                        >
+                                            &bull; About Us
+                                        </Link>
+                                    </li>
+                                </StaggerItem>
+                            </ul>
+                        </StaggerContainer>
                     </div>
 
                     <div>
                         <h3 className="subHeading mb-4">&mdash; Follow Us</h3>
-                        <ul className="flex gap-4">
-                            <li>
-                                <Link
-                                    href="https://t.me/alireza_arh12"
-                                    target="_blank"
-                                >
-                                    <FaTelegram className="socialIcon" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://www.instagram.com/__alireza.hamidi__/"
-                                    target="_blank"
-                                >
-                                    <FaInstagram className="socialIcon" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://www.linkedin.com/in/alireza-hamidi-aa8547288"
-                                    target="_blank"
-                                >
-                                    <FaLinkedin className="socialIcon" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://github.com/Alireza-Hamidi2001"
-                                    target="_blank"
-                                >
-                                    <FaGithub className="socialIcon" />
-                                </Link>
-                            </li>
-                        </ul>
+                        <StaggerContainer delay={0.5}>
+                            <ul className="flex gap-4">
+                                <StaggerItem>
+                                    <li>
+                                        <Link
+                                            href="https://t.me/alireza_arh12"
+                                            target="_blank"
+                                        >
+                                            <FaTelegram className="socialIcon" />
+                                        </Link>
+                                    </li>
+                                </StaggerItem>
+
+                                <StaggerItem>
+                                    <li>
+                                        <Link
+                                            href="https://www.instagram.com/__alireza.hamidi__/"
+                                            target="_blank"
+                                        >
+                                            <FaInstagram className="socialIcon" />
+                                        </Link>
+                                    </li>
+                                </StaggerItem>
+
+                                <StaggerItem>
+                                    <li>
+                                        <Link
+                                            href="https://www.linkedin.com/in/alireza-hamidi-aa8547288"
+                                            target="_blank"
+                                        >
+                                            <FaLinkedin className="socialIcon" />
+                                        </Link>
+                                    </li>
+                                </StaggerItem>
+
+                                <StaggerItem>
+                                    <li>
+                                        <Link
+                                            href="https://github.com/Alireza-Hamidi2001"
+                                            target="_blank"
+                                        >
+                                            <FaGithub className="socialIcon" />
+                                        </Link>
+                                    </li>
+                                </StaggerItem>
+                            </ul>
+                        </StaggerContainer>
                     </div>
                 </div>
                 <div className="dark:border-gray-800 text-center">

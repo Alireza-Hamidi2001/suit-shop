@@ -16,6 +16,7 @@ import {
     ResponsiveContainer,
 } from "recharts";
 import { useEffect, useState } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 function AdminDashboard() {
     const [suits, setSuits] = useState([]);
@@ -74,100 +75,138 @@ function AdminDashboard() {
 
             {/* Cart */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center">
-                    <p className="font-comic text-2xl font-bold text-amber-600">
-                        {totalProducts}
-                    </p>
-                    <p className="paragraph mb-0">Total Products</p>
-                </div>
-                <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center">
-                    <p className="font-comic text-2xl font-bold text-amber-600">
-                        ${totalValue}
-                    </p>
-                    <p className="paragraph mb-0">Total Value</p>
-                </div>
-                <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center">
-                    <p className="font-comic text-2xl font-bold text-amber-600">
-                        ${avgPrice}
-                    </p>
-                    <p className="paragraph mb-0">Average Price</p>
-                </div>
-                <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center">
-                    <p className="font-comic text-2xl font-bold text-amber-600">
-                        {discountedProducts}
-                    </p>
-                    <p className="paragraph mb-0">Discounted Products</p>
-                </div>
+                <ScrollReveal
+                    direction="left"
+                    delay={0}
+                    className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
+                >
+                    <div>
+                        <p className="font-comic text-2xl font-bold text-amber-600">
+                            {totalProducts}
+                        </p>
+                        <p className="paragraph mb-0">Total Products</p>
+                    </div>
+                </ScrollReveal>
+                <ScrollReveal
+                    direction="right"
+                    delay={0}
+                    className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
+                >
+                    <div>
+                        <p className="font-comic text-2xl font-bold text-amber-600">
+                            ${totalValue}
+                        </p>
+                        <p className="paragraph mb-0">Total Value</p>
+                    </div>
+                </ScrollReveal>
+                <ScrollReveal
+                    direction="left"
+                    delay={0}
+                    className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
+                >
+                    <div>
+                        <p className="font-comic text-2xl font-bold text-amber-600">
+                            ${avgPrice}
+                        </p>
+                        <p className="paragraph mb-0">Average Price</p>
+                    </div>
+                </ScrollReveal>
+                <ScrollReveal
+                    direction="right"
+                    delay={0}
+                    className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
+                >
+                    <div>
+                        <p className="font-comic text-2xl font-bold text-amber-600">
+                            {discountedProducts}
+                        </p>
+                        <p className="paragraph mb-0">Discounted Products</p>
+                    </div>
+                </ScrollReveal>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow">
-                    <h4 className="paragraph mb-0 text-center">
-                        Products by Category
-                    </h4>
-                    <ResponsiveContainer
-                        width="100%"
-                        height={300}
-                    >
-                        <PieChart>
-                            <Pie
-                                data={pieData}
-                                cx="50%"
-                                cy="50%"
-                                labelLine={false}
-                                label={({ name, percent }) =>
-                                    `${name}: ${(percent * 100).toFixed(0)}%`
-                                }
-                                outerRadius={100}
-                                fill="#8884d8"
-                                dataKey="value"
-                            >
-                                {pieData.map((entry, index) => (
-                                    <Cell
-                                        key={`cell-${index}`}
-                                        fill={COLORS[index % COLORS.length]}
-                                    />
-                                ))}
-                            </Pie>
-                            <Tooltip />
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
+                <ScrollReveal
+                    direction="left"
+                    delay={0}
+                    className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow"
+                >
+                    <div>
+                        <h4 className="paragraph mb-0 text-center">
+                            Products by Category
+                        </h4>
+                        <ResponsiveContainer
+                            width="100%"
+                            height={300}
+                        >
+                            <PieChart>
+                                <Pie
+                                    data={pieData}
+                                    cx="50%"
+                                    cy="50%"
+                                    labelLine={false}
+                                    label={({ name, percent }) =>
+                                        `${name}: ${(percent * 100).toFixed(
+                                            0,
+                                        )}%`
+                                    }
+                                    outerRadius={100}
+                                    fill="#8884d8"
+                                    dataKey="value"
+                                >
+                                    {pieData.map((entry, index) => (
+                                        <Cell
+                                            key={`cell-${index}`}
+                                            fill={COLORS[index % COLORS.length]}
+                                        />
+                                    ))}
+                                </Pie>
+                                <Tooltip />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </div>{" "}
+                </ScrollReveal>
 
                 {/* نمودار میله‌ای - قیمت محصولات */}
-                <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow">
-                    <h4 className="paragraph mb-8 text-center">
-                        Top Products by Price
-                    </h4>
-                    <ResponsiveContainer
-                        width="100%"
-                        height={300}
-                    >
-                        <BarChart data={barData}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis
-                                dataKey="name"
-                                angle={-45}
-                                textAnchor="end"
-                                height={80}
-                                fontSize={10}
-                            />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar
-                                dataKey="price"
-                                fill="#004d4d"
-                                name="Price ($)"
+                <ScrollReveal
+                    direction="right"
+                    delay={0}
+                    className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow"
+                >
+                    <div>
+                        <h4 className="paragraph mb-8 text-center">
+                            Top Products by Price
+                        </h4>
+                        <ResponsiveContainer
+                            width="100%"
+                            height={300}
+                        >
+                            <BarChart data={barData}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis
+                                    dataKey="name"
+                                    angle={-45}
+                                    textAnchor="end"
+                                    height={80}
+                                    fontSize={10}
                                 />
-                            <Bar
-                                dataKey="discount"
-                                fill="#00a6a6"
-                                name="Discount (%)"
-                            />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </div>
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Bar
+                                    dataKey="price"
+                                    fill="#004d4d"
+                                    name="Price ($)"
+                                />
+                                <Bar
+                                    dataKey="discount"
+                                    fill="#00a6a6"
+                                    name="Discount (%)"
+                                />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </ScrollReveal>
             </div>
         </div>
     );

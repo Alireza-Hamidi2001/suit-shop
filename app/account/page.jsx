@@ -74,7 +74,7 @@ export default async function AccountPage() {
             </div>
 
             {/* ✅ بخش متفاوت برای ادمین و کاربر معمولی */}
-            <div className="mt-10">
+            <div className="mt-20">
                 {user.role === "admin" ? (
                     <AdminDashboard />
                 ) : (
