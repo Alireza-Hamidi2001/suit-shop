@@ -9,9 +9,9 @@ function CreatePost() {
         <>
             <button
                 onClick={() => setShowCreateModal((prev) => !prev)}
-                className="bg-teal-500 hover:bg-teal-600 duration-200 transition-all hover:cursor-pointer text-white py-2 px-3 mb-4 text-sm"
+                className="font-open-sans bg-teal-600 hover:bg-teal-700 duration-200 transition-all hover:cursor-pointer text-white py-2 px-3 mb-4 text-sm"
             >
-                Create a new product
+                + Create a new product
             </button>
             <CreateModalPost
                 showCreateModal={showCreateModal}

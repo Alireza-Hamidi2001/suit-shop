@@ -9,7 +9,7 @@ function Filter() {
     const activeFilter = searchParams.get("category") ?? "all";
 
     const filterItems = [
-        { id: 1, name: "All suits", filter: "all" },
+        { id: 1, name: "All", filter: "all" },
         { id: 2, name: "Gentlemen", filter: "male" },
         { id: 3, name: "Ladies", filter: "female" },
         { id: 4, name: "Palto", filter: "palto" },
@@ -24,7 +24,7 @@ function Filter() {
     }
 
     return (
-        <div className="flex items-center gap-2 p-1 bg-amber-50 dark:bg-zinc-900 rounded-full shadow-md border border-amber-200 dark:border-zinc-700 w-fit mb-8">
+        <div className="flex p-1 items-center gap-1 bg-amber-50 dark:bg-zinc-900 rounded-full shadow-md border border-amber-200 dark:border-zinc-700 w-fit mb-8">
             {filterItems.map((filterItem) => (
                 <Button
                     key={filterItem.id}
@@ -47,7 +47,7 @@ function Button({ filter, handleFilter, activeFilter, children }) {
             onClick={() => handleFilter(filter)}
             className={`
                 font-comic text-sm font-normal md:font-medium tracking-wide
-                px-2 py-1 md:px-4 md:py-2 rounded-full transition-all duration-300
+                px-2 py-1 md:px-4 rounded-full transition-all duration-300
                 ${
                     isActive
                         ? "bg-amber-600 text-white shadow-md shadow-amber-200 dark:shadow-amber-900/30 scale-105"
