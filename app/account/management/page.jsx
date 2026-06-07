@@ -46,57 +46,58 @@ async function ManagementPage({ searchParams }) {
                                 >
                                     <BtnEditHandler suit={suit} />
 
-                                    <div className="w-48 h-48 sm:w-32 sm:h-32 relative">
-                                        <Image
-                                            alt={suit.name}
-                                            className="object-cover rounded-full"
-                                            fill
-                                            src={suit.image}
-                                        />
-                                    </div>
-
-                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 paragraph text-sm">
-                                        <p>
-                                            <span className="font-bold italic font-comic">
-                                                Suit id <br />
-                                            </span>
-                                            {suit.id}
-                                        </p>
-                                        <p>
-                                            <span className="font-bold italic font-comic">
-                                                Suit name <br />
-                                            </span>
-                                            {suit.name}
-                                        </p>
-                                        <p>
-                                            <span className="font-bold italic font-comic">
-                                                price <br />
-                                            </span>
-                                            ${suit.price}
-                                        </p>
-                                        <p>
-                                            <span className="font-bold italic font-comic">
-                                                discount <br />
-                                            </span>
-                                            {suit.discount}%
-                                        </p>
-                                        <p>
-                                            <span className="font-bold italic font-comic">
-                                                fabric <br />
-                                            </span>
-                                            {suit.fabric}
-                                        </p>
-                                        <p>
-                                            <span className="font-bold italic font-comic">
-                                                category <br />
-                                            </span>
-                                            {suit.category === "male"
-                                                ? "Men"
-                                                : "Women"}
-                                        </p>
-                                        <p className="col-span-2 md:col-span-3 lg:col-span-6">
-                                            <span className="font-bold italic font-comic">
-                                                description : <br />
+                                    <div className="grid grid-cols-2 gap-8 items-center justify-center">
+                                        <div className="w-68 h-68 relative">
+                                            <Image
+                                                alt={suit.name}
+                                                className="object-cover rounded-full"
+                                                fill
+                                                src={suit.image}
+                                            />
+                                        </div>
+                                        <div className="grid grid-cols-3 gap-4">
+                                            <p className="paragraph">
+                                                <span className="label text-teal-800 dark:text-teal-500">
+                                                    Suit id<br />
+                                                </span>
+                                                {suit.id}
+                                            </p>
+                                            <p className="paragraph">
+                                                <span className="label text-teal-800 dark:text-teal-500">
+                                                    Suit name<br />
+                                                </span>
+                                                {suit.name}
+                                            </p>
+                                            <p className="paragraph">
+                                                <span className="label text-teal-800 dark:text-teal-500">
+                                                    price<br />
+                                                </span>
+                                                ${suit.price}
+                                            </p>
+                                            <p className="paragraph">
+                                                <span className="label text-teal-800 dark:text-teal-500">
+                                                    discount<br />
+                                                </span>
+                                                {suit.discount}%
+                                            </p>
+                                            <p className="paragraph">
+                                                <span className="label text-teal-800 dark:text-teal-500">
+                                                    fabric<br />
+                                                </span>
+                                                {suit.fabric}
+                                            </p>
+                                            <p className="paragraph">
+                                                <span className="label text-teal-800 dark:text-teal-500">
+                                                    category<br />
+                                                </span>
+                                                {suit.category === "male"
+                                                    ? "Men"
+                                                    : "Women"}
+                                            </p>
+                                        </div>
+                                        <p className="col-span-2 md:col-span-3 lg:col-span-6 paragraph text-sm">
+                                            <span className="label text-teal-800 dark:text-teal-500">
+                                                description<br />
                                             </span>
                                             {suit.description}
                                         </p>
