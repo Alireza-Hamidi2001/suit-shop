@@ -4,7 +4,8 @@ import { redirect } from "next/navigation";
 import { PiHandWaving } from "react-icons/pi";
 import Image from "next/image";
 import DeleteMenu from "../_components/DeleteMenu";
-import SignOutButton from "../_components/SignOutButton"; // ✅ اضافه کن
+import UserDashboard from "../_components/UserDashboard";
+import AdminDashboard from "../_components/AdminDashboard";
 
 export const metadata = {
     title: "Account",
@@ -22,14 +23,13 @@ export default async function AccountPage() {
         redirect("/login");
     }
 
-    // آواتار: اگه از NextAuth اومده باشه از user.image استفاده کن
     const avatar = isNextAuthUser ? user.image : user.avatar || "/user.png";
 
     return (
-        <div>
+        <div className="">
             <header className="flex justify-between items-center mb-7">
                 <h2 className="flex gap-1.5 justify-start items-center font-semibold text-3xl text-cyan-950 uppercase tracking-wider dark:text-cyan-50 ">
-                    <p className="flex items-center font-light text-xl tracking-normal lowercase">
+                    <p className="font-comic flex items-center font-light text-xl tracking-wide lowercase">
                         <span className="opacity-30 relative">
                             <PiHandWaving className="w-12 h-12 shakeHand" />
                         </span>
@@ -39,38 +39,47 @@ export default async function AccountPage() {
                 </h2>
                 <div className="flex items-center gap-4">
                     <DeleteMenu />
-                    {/* <SignOutButton isNextAuthUser={isNextAuthUser} /> */}
                 </div>
             </header>
 
-            {/* نمایش اطلاعات کاربر */}
-            <div className="mt-8 p-6 bg-amber-100 dark:bg-zinc-800 border border-amber-200 dark:border-zinc-700 rounded-lg">
+            <div className="mt-8 p-6 bg-white dark:bg-zinc-900 shadow rounded-lg">
                 <div className="flex items-center gap-6">
                     {avatar && (
-                        <div className="relative w-30 h-30">
+                        <div className="relative w-30 h-30 flex items-center">
                             <Image
                                 src={avatar}
                                 alt={user.name}
                                 fill
-                                className="object-cover object-top rounded-full border-2 border-accent-500"
+                                className="object-cover rounded-full"
                             />
                         </div>
                     )}
-                    <div className="paragraph m-0">
-                        <p className="text-lg">
-                            <span className="font-semibold italic font-comic tracking-widest text-sm">
+                    <div className="paragraph m-0 grid gap-2 pl-6 border-l border-zinc-200 dark:border-zinc-800">
+                        <p className="text-lg flex gap-2 items-center">
+                            <p className="font-semibold italic font-comic tracking-widest text-sm">
                                 &bull; Email :
-                            </span>{" "}
-                            {user.email}
+                            </p>{" "}
+                            <p className="paragraph mb-0">{user.email}</p>
                         </p>
-                        <p className="text-lg">
-                            <span className="font-semibold italic font-comic tracking-widest text-sm">
+                        <p className="text-lg flex gap-2 items-center">
+                            <p className="font-semibold italic font-comic tracking-widest text-sm">
                                 &bull; Role :
-                            </span>{" "}
-                            {user.role || "user"}
+                            </p>{" "}
+                            <p className="py-1 px-2 bg-teal-500 dark:bg-teal-800 dark:text-white capitalize rounded-sm paragraph mb-0">
+                                {user.role || "user"}
+                            </p>
                         </p>
                     </div>
                 </div>
+            </div>
+
+            {/* ✅ بخش متفاوت برای ادمین و کاربر معمولی */}
+            <div className="mt-10">
+                {user.role === "admin" ? (
+                    <AdminDashboard />
+                ) : (
+                    <UserDashboard user={user} />
+                )}
             </div>
         </div>
     );
