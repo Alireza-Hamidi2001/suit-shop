@@ -84,20 +84,20 @@ function CommentActions({ commentId }) {
             <button
                 onClick={handleApprove}
                 disabled={isLoading}
-                className="flex items-center gap-1 px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                className="font-comic flex items-center gap-1 px-3 py-1 bg-teal-600 hover:bg-teal-700 text-white rounded-sm transition-colors disabled:opacity-50"
                 title="Approve comment"
             >
-                <FaCheck className="w-4 h-4" />
+                <FaCheck className="w-3 h-3" />
                 <span className="text-sm hidden sm:inline">Approve</span>
             </button>
             <button
                 onClick={handleDelete}
                 disabled={isLoading}
-                className="flex items-center gap-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                className="flex items-center gap-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-sm transition-colors disabled:opacity-50"
                 title="Delete comment"
             >
-                <FaTrashAlt className="w-4 h-4" />
-                <span className="text-sm hidden sm:inline">Delete</span>
+                <FaTrashAlt className="w-3 h-3" />
+                <span className="font-comic text-sm hidden sm:inline">Delete</span>
             </button>
         </div>
     );

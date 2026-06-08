@@ -42,7 +42,7 @@ async function CommentsManagementPage() {
                     {pendingComments.map((comment) => (
                         <div
                             key={comment.id}
-                            className="bg-amber-50 dark:bg-zinc-900 rounded-lg border border-amber-100 dark:border-zinc-800 p-4">
+                            className="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4">
                             <div className="flex flex-col md:flex-row gap-4">
                                 {/* تصویر محصول */}
                                 <div className="relative w-24 h-24 flex-shrink-0">

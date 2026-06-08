@@ -24,7 +24,7 @@ function Filter() {
     }
 
     return (
-        <div className="flex p-1 items-center gap-1 bg-amber-50 dark:bg-zinc-900 rounded-full shadow-md border border-amber-200 dark:border-zinc-700 w-fit mb-8">
+        <div className="flex p-1 items-center gap-1 bg-white dark:bg-zinc-900 rounded-full shadow border border-zinc-200 dark:border-zinc-700 w-fit mb-8">
             {filterItems.map((filterItem) => (
                 <Button
                     key={filterItem.id}

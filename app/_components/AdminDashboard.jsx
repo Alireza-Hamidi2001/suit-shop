@@ -17,6 +17,7 @@ import {
 } from "recharts";
 import { useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import ScaleRevealSpring from "./ScaleRevealSpring";
 
 function AdminDashboard() {
     const [suits, setSuits] = useState([]);
@@ -75,8 +76,7 @@ function AdminDashboard() {
 
             {/* Cart */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <ScrollReveal
-                    direction="left"
+                <ScaleRevealSpring
                     delay={0}
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
@@ -86,10 +86,9 @@ function AdminDashboard() {
                         </p>
                         <p className="paragraph mb-0">Total Products</p>
                     </div>
-                </ScrollReveal>
-                <ScrollReveal
-                    direction="right"
-                    delay={0}
+                </ScaleRevealSpring>
+                <ScaleRevealSpring
+                    delay={0.2}
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
                     <div>
@@ -98,10 +97,9 @@ function AdminDashboard() {
                         </p>
                         <p className="paragraph mb-0">Total Value</p>
                     </div>
-                </ScrollReveal>
-                <ScrollReveal
-                    direction="left"
-                    delay={0}
+                </ScaleRevealSpring>
+                <ScaleRevealSpring
+                    delay={0.4}
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
                     <div>
@@ -110,10 +108,9 @@ function AdminDashboard() {
                         </p>
                         <p className="paragraph mb-0">Average Price</p>
                     </div>
-                </ScrollReveal>
-                <ScrollReveal
-                    direction="right"
-                    delay={0}
+                </ScaleRevealSpring>
+                <ScaleRevealSpring
+                    delay={0.6}
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
                     <div>
@@ -122,7 +119,7 @@ function AdminDashboard() {
                         </p>
                         <p className="paragraph mb-0">Discounted Products</p>
                     </div>
-                </ScrollReveal>
+                </ScaleRevealSpring>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
