@@ -5,6 +5,7 @@ import {
     FaUser,
     FaUserShield,
     FaShoppingBag,
+    FaComment,
 } from "react-icons/fa";
 import SignOutButton from "./SignOutButton";
 import Link from "next/link";
@@ -27,8 +28,11 @@ const navLinks = [
     },
 ];
 
-function SideNavigation({ user, isNextAuthUser = false }) {
-    // ✅ اضافه کن
+function SideNavigation({
+    user,
+    isNextAuthUser = false,
+    pendingCommentsCount = 0,
+}) {
     const pathName = usePathname();
 
     return (
@@ -41,7 +45,7 @@ function SideNavigation({ user, isNextAuthUser = false }) {
                             text-black dark:text-gray-100 hover:bg-amber-100 italic dark:hover:bg-zinc-800
                             ${
                                 pathName === link.href
-                                    ? "border-r-2 sm:border-r-0 sm:border-l-4  border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
+                                    ? "border-r-2 sm:border-r-0 sm:border-l-4 border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
                                     : ""
                             }`}
                             href={link.href}
@@ -53,21 +57,49 @@ function SideNavigation({ user, isNextAuthUser = false }) {
                 ))}
 
                 {user.role === "admin" && (
-                    <li>
-                        <Link
-                            className={`p-2 md:py-3 md:px-5 transition-colors flex items-center gap-4 text-shadow-[0px_0px_3px] text-shadow-white dark:text-shadow-[1px_1px_7px] dark:text-shadow-black                            
+                    <>
+                        <li>
+                            <Link
+                                className={`p-2 md:py-3 md:px-5 transition-colors flex items-center gap-4 text-shadow-[0px_0px_3px] text-shadow-white dark:text-shadow-[1px_1px_7px] dark:text-shadow-black                            
                             text-black dark:text-gray-100 hover:bg-amber-100 italic dark:hover:bg-zinc-800
                             ${
                                 pathName === "/account/management"
                                     ? "border-r-2 sm:border-r-0 border-l-4 border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
                                     : ""
                             }`}
-                            href="/account/management"
-                        >
-                            <FaUserShield className="h-8 w-8 md:h-5 md:w-5 text-black dark:text-gray-100 hover:text-blue-800 italic dark:hover:text-cyan-500" />
-                            <p className="hidden sm:block">Edit collection</p>
-                        </Link>
-                    </li>
+                                href="/account/management"
+                            >
+                                <FaUserShield className="h-8 w-8 md:h-5 md:w-5 text-black dark:text-gray-100 hover:text-blue-800 italic dark:hover:text-cyan-500" />
+                                <p className="hidden sm:block">
+                                    Edit collection
+                                </p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className={`p-2 md:py-3 md:px-5 transition-colors flex items-center gap-4 text-shadow-[0px_0px_3px] text-shadow-white dark:text-shadow-[1px_1px_7px] dark:text-shadow-black                            
+                            text-black dark:text-gray-100 hover:bg-amber-100 italic dark:hover:bg-zinc-800
+                            ${
+                                pathName === "/account/comments"
+                                    ? "border-r-2 sm:border-r-0 border-l-4 border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
+                                    : ""
+                            }`}
+                                href="/account/comments"
+                            >
+                                <div className="relative">
+                                    <FaComment className="h-8 w-8 md:h-5 md:w-5 text-black dark:text-gray-100 hover:text-blue-800 italic dark:hover:text-cyan-500" />
+                                    {pendingCommentsCount > 0 && (
+                                        <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-md">
+                                            {pendingCommentsCount > 9
+                                                ? "9+"
+                                                : pendingCommentsCount}
+                                        </span>
+                                    )}
+                                </div>
+                                <p className="hidden sm:block">Comments</p>
+                            </Link>
+                        </li>
+                    </>
                 )}
                 {user.role === "user" && (
                     <li>

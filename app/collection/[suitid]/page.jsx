@@ -21,6 +21,9 @@ import {
     StaggerItem,
 } from "@/app/_components/StaggerWrapper";
 import ScrollReveal from "@/app/_components/ScrollReveal";
+import Comments from "@/app/_components/Comments";
+import WriteComment from "@/app/_components/WriteComment";
+import ScaleRevealSpring from "@/app/_components/ScaleRevealSpring";
 
 // ========== META DATA ==========
 export async function generateMetadata({ params }) {
@@ -191,7 +194,6 @@ function StaticSuitInfo({ suit, suitId, user }) {
                         <DynamicPrice suitId={suitId} />
                     </Suspense>
 
-                    {/* ✅ دکمه‌های اقدام بر اساس وضعیت لاگین */}
                     <ActionButtons
                         suitId={suitId}
                         user={user}
@@ -206,31 +208,39 @@ function StaticSuitInfo({ suit, suitId, user }) {
 function WarrantySection() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 pt-10 border-t border-gray-200 dark:border-gray-800">
-            <div className="text-center p-4">
-                <FaTruck className="h-10 w-10 mx-auto text-amber-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Free Shipping</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                    On orders over $200 worldwide
-                </p>
-            </div>
+            <ScaleRevealSpring delay={0}>
+                <div className="text-center p-4">
+                    <FaTruck className="h-10 w-10 mx-auto text-amber-600 mb-3" />
+                    <h3 className="font-semibold text-lg mb-2">
+                        Free Shipping
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        On orders over $200 worldwide
+                    </p>
+                </div>
+            </ScaleRevealSpring>
 
-            <div className="text-center p-4">
-                <FaShieldAlt className="h-10 w-10 mx-auto text-amber-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">
-                    Quality Guarantee
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                    365-day warranty on all suits
-                </p>
-            </div>
+            <ScaleRevealSpring delay={0.1}>
+                <div className="text-center p-4">
+                    <FaShieldAlt className="h-10 w-10 mx-auto text-amber-600 mb-3" />
+                    <h3 className="font-semibold text-lg mb-2">
+                        Quality Guarantee
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        365-day warranty on all suits
+                    </p>
+                </div>
+            </ScaleRevealSpring>
 
-            <div className="text-center p-4">
-                <FaExchangeAlt className="h-10 w-10 mx-auto text-amber-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Easy Returns</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                    30-day return policy, no questions asked
-                </p>
-            </div>
+            <ScaleRevealSpring delay={0.2}>
+                <div className="text-center p-4">
+                    <FaExchangeAlt className="h-10 w-10 mx-auto text-amber-600 mb-3" />
+                    <h3 className="font-semibold text-lg mb-2">Easy Returns</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        30-day return policy, no questions asked
+                    </p>
+                </div>
+            </ScaleRevealSpring>
         </div>
     );
 }
@@ -296,9 +306,20 @@ export default async function SuitDetailPage({ params }) {
             <StaticSuitInfo
                 suit={suit}
                 suitId={suitId}
-                user={user} // ✅ پاس دادن اطلاعات کاربر
+                user={user}
             />
             <WarrantySection />
+            <div className="mt-16">
+                <WriteComment
+                    suitId={suit.id}
+                    user={user}
+                />
+
+                <Comments
+                    user={user}
+                    suitId={suit.id}
+                />
+            </div>
             <Footer />
         </div>
     );
