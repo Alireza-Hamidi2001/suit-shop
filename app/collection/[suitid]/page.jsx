@@ -123,7 +123,7 @@ function StaticSuitInfo({ suit, suitId, user }) {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <div className="relative aspect-[4/4] overflow-hidden rounded-xl bg-amber-100 dark:bg-zinc-900">
+            <div className="relative aspect-3/4 overflow-hidden rounded-xl bg-amber-100 dark:bg-zinc-900">
                 <Image
                     src={image || "/suits/suit-placeholder.jpg"}
                     fill
@@ -134,7 +134,7 @@ function StaticSuitInfo({ suit, suitId, user }) {
             </div>
 
             <div>
-                <h1 className="title text-4xl bg-amber-50 dark:bg-zinc-950 rounded-sm lg:-translate-x-46 p-6 w-[120%] lg:text-5xl mb-4">
+                <h1 className="title text-5xl sm:text-4xl bg-amber-50 dark:bg-zinc-950 rounded-sm lg:-translate-x-46 p-6 lg:text-5xl mb-4">
                     <ScrollReveal direction="right">{name}</ScrollReveal>
                 </h1>
                 <StaggerContainer>
