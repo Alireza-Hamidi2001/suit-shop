@@ -13,9 +13,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getSuit, getSuitPrice } from "@/lib/data-service";
-import { getCurrentUser } from "@/lib/auth"; // ✅ اضافه شد
+import { getCurrentUser } from "@/lib/auth";
 import Footer from "@/app/_components/Footer";
-import AddToCartButton from "@/app/_components/AddToCartButton"; // ✅ کامپوننت جدید
+import AddToCartButton from "@/app/_components/AddToCartButton";
 import {
     StaggerContainer,
     StaggerItem,
@@ -76,15 +76,36 @@ async function DynamicPrice({ suitId }) {
 }
 
 // ========== کامپوننت دکمه‌های اقدام (بر اساس وضعیت لاگین) ==========
-function ActionButtons({ suitId, user }) {
+function ActionButtons({ suitId, user, price }) {
     // اگر کاربر لاگین کرده باشد، دکمه Add to Cart نمایش داده می‌شود
-    if (user) {
+    if (user && user.role === "user") {
         return (
-            <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                <AddToCartButton suitId={suitId} />
+            <div className="grid grid-cols-2  gap-4 mt-6">
+                <AddToCartButton
+                    suitId={suitId}
+                    price={price}
+                />
                 <Link
                     href="/collection"
-                    className="backButton inline-flex items-center justify-center"
+                    className="backButton justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
+                >
+                    Back to Collection
+                </Link>
+            </div>
+        );
+    }
+    if (user && user.role === "admin") {
+        return (
+            <div className="grid grid-cols-2  gap-4 mt-6">
+                <Link
+                    href="/account/management"
+                    className="backButton border border-black dark:border-white justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
+                >
+                    Management section
+                </Link>
+                <Link
+                    href="/collection"
+                    className="backButton justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
                 >
                     Back to Collection
                 </Link>
@@ -119,7 +140,7 @@ function ActionButtons({ suitId, user }) {
 }
 
 function StaticSuitInfo({ suit, suitId, user }) {
-    const { name, image, description, fabric } = suit;
+    const { name, image, description, price, fabric } = suit;
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -134,7 +155,7 @@ function StaticSuitInfo({ suit, suitId, user }) {
             </div>
 
             <div>
-                <h1 className="title text-5xl sm:text-4xl bg-amber-50 dark:bg-zinc-950 rounded-sm lg:-translate-x-46 p-6 lg:text-5xl mb-4">
+                <h1 className="title text-5xl sm:text-4xl bg-amber-50 dark:bg-zinc-950 lg:-translate-x-46 p-6 lg:text-5xl mb-4">
                     <ScrollReveal direction="right">{name}</ScrollReveal>
                 </h1>
                 <StaggerContainer>
@@ -197,6 +218,7 @@ function StaticSuitInfo({ suit, suitId, user }) {
                     <ActionButtons
                         suitId={suitId}
                         user={user}
+                        price={price}
                     />
                 </div>
             </div>
@@ -210,7 +232,7 @@ function WarrantySection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 pt-10 border-t border-gray-200 dark:border-gray-800">
             <ScaleRevealSpring delay={0}>
                 <div className="text-center p-4">
-                    <FaTruck className="h-10 w-10 mx-auto text-amber-600 mb-3" />
+                    <FaTruck className="h-10 w-10 mx-auto text-teal-600 mb-3" />
                     <h3 className="font-semibold text-lg mb-2">
                         Free Shipping
                     </h3>
@@ -222,7 +244,7 @@ function WarrantySection() {
 
             <ScaleRevealSpring delay={0.1}>
                 <div className="text-center p-4">
-                    <FaShieldAlt className="h-10 w-10 mx-auto text-amber-600 mb-3" />
+                    <FaShieldAlt className="h-10 w-10 mx-auto text-teal-600 mb-3" />
                     <h3 className="font-semibold text-lg mb-2">
                         Quality Guarantee
                     </h3>
@@ -234,7 +256,7 @@ function WarrantySection() {
 
             <ScaleRevealSpring delay={0.2}>
                 <div className="text-center p-4">
-                    <FaExchangeAlt className="h-10 w-10 mx-auto text-amber-600 mb-3" />
+                    <FaExchangeAlt className="h-10 w-10 mx-auto text-teal-600 mb-3" />
                     <h3 className="font-semibold text-lg mb-2">Easy Returns</h3>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
                         30-day return policy, no questions asked

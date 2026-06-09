@@ -45,7 +45,7 @@ function SideNavigation({
                             text-black dark:text-gray-100 hover:bg-amber-100 italic dark:hover:bg-zinc-800
                             ${
                                 pathName === link.href
-                                    ? "border-r-2 sm:border-r-0 sm:border-l-4 border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
+                                    ? "border-r-2 sm:border-r-0 sm:border-l-4 border-teal-600 dark:border-teal-500 bg-amber-100 dark:bg-zinc-800"
                                     : ""
                             }`}
                             href={link.href}
@@ -64,7 +64,7 @@ function SideNavigation({
                             text-black dark:text-gray-100 hover:bg-amber-100 italic dark:hover:bg-zinc-800
                             ${
                                 pathName === "/account/management"
-                                    ? "border-r-2 sm:border-r-0 border-l-4 border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
+                                    ? "border-r-2 sm:border-r-0 border-l-4 border-teal-500 dark:border-teal-600 bg-amber-100 dark:bg-zinc-800"
                                     : ""
                             }`}
                                 href="/account/management"
@@ -81,7 +81,7 @@ function SideNavigation({
                             text-black dark:text-gray-100 hover:bg-amber-100 italic dark:hover:bg-zinc-800
                             ${
                                 pathName === "/account/comments"
-                                    ? "border-r-2 sm:border-r-0 border-l-4 border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
+                                    ? "border-r-2 sm:border-r-0 border-l-4 border-teal0-500 dark:border-teal0-600 bg-amber-100 dark:bg-zinc-800"
                                     : ""
                             }`}
                                 href="/account/comments"
@@ -108,7 +108,7 @@ function SideNavigation({
                             text-black dark:text-gray-100 hover:bg-amber-100 italic dark:hover:bg-zinc-800
                             ${
                                 pathName === "/account/orders"
-                                    ? "border-l-4 border-amber-300 dark:border-zinc-700 bg-amber-100 dark:bg-zinc-800"
+                                    ? "border-l-4 border-teal-500 dark:border-teal-600 bg-amber-100 dark:bg-zinc-800"
                                     : ""
                             }`}
                             href="/account/orders"

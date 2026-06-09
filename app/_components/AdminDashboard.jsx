@@ -81,7 +81,7 @@ function AdminDashboard() {
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
                     <div>
-                        <p className="font-comic text-2xl font-bold text-amber-600">
+                        <p className="font-comic text-2xl font-bold text-teal-600">
                             {totalProducts}
                         </p>
                         <p className="paragraph mb-0">Total Products</p>
@@ -92,7 +92,7 @@ function AdminDashboard() {
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
                     <div>
-                        <p className="font-comic text-2xl font-bold text-amber-600">
+                        <p className="font-comic text-2xl font-bold text-teal-600">
                             ${totalValue}
                         </p>
                         <p className="paragraph mb-0">Total Value</p>
@@ -103,7 +103,7 @@ function AdminDashboard() {
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
                     <div>
-                        <p className="font-comic text-2xl font-bold text-amber-600">
+                        <p className="font-comic text-2xl font-bold text-teal-600">
                             ${avgPrice}
                         </p>
                         <p className="paragraph mb-0">Average Price</p>
@@ -114,7 +114,7 @@ function AdminDashboard() {
                     className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow text-center"
                 >
                     <div>
-                        <p className="font-comic text-2xl font-bold text-amber-600">
+                        <p className="font-comic text-2xl font-bold text-teal-600">
                             {discountedProducts}
                         </p>
                         <p className="paragraph mb-0">Discounted Products</p>

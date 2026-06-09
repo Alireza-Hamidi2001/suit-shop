@@ -90,7 +90,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="max-w-md mb-60 sm:mb-20 mx-auto p-6 bg-white dark:bg-zinc-900 rounded-lg shadow">
+        <div className="max-w-md mb-60 sm:mb-20 mx-auto p-6 bg-white dark:bg-zinc-900 rounded-lg shadow-lg border border-zinc-200 dark:border-zinc-700">
             <h1 className="text-5xl tracking-wide pb-5 mb-5 text-center border-b border-zinc-300 dark:border-zinc-800 font-courgette">
                 Login
             </h1>

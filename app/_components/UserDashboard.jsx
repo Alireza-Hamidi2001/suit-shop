@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { FaShoppingBag, FaUserEdit, FaHistory } from "react-icons/fa";
 import ScrollReveal from "./ScrollReveal";
+import ScaleRevealSpring from "./ScaleRevealSpring";
 
 function UserDashboard({ user }) {
     return (
@@ -12,13 +13,12 @@ function UserDashboard({ user }) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <ScrollReveal
-                    direction="left"
-                    delay={0}
+                <ScaleRevealSpring
+                    delay={0.1}
                     className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow text-center hover:shadow-lg transition-shadow"
                 >
                     <Link href="/account/profile">
-                        <FaUserEdit className="w-12 h-12 mx-auto text-amber-600 mb-3" />
+                        <FaUserEdit className="w-12 h-12 mx-auto text-teal-600 mb-3" />
                         <h4 className="paragraph mb-0 font-semibold text-lg">
                             Edit Profile
                         </h4>
@@ -26,15 +26,14 @@ function UserDashboard({ user }) {
                             Update your personal information
                         </p>
                     </Link>
-                </ScrollReveal>
+                </ScaleRevealSpring>
 
-                <ScrollReveal
-                    direction="left"
-                    delay={0.1}
+                <ScaleRevealSpring
+                    delay={0.3}
                     className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow text-center hover:shadow-lg transition-shadow"
                 >
                     <Link href="/account/orders">
-                        <FaHistory className="w-12 h-12 mx-auto text-amber-600 mb-3" />
+                        <FaHistory className="w-12 h-12 mx-auto text-teal-600 mb-3" />
                         <h4 className="paragraph mb-0 font-semibold text-lg">
                             Order History
                         </h4>
@@ -42,15 +41,14 @@ function UserDashboard({ user }) {
                             View your last orders
                         </p>
                     </Link>
-                </ScrollReveal>
+                </ScaleRevealSpring>
 
-                <ScrollReveal
-                    direction="left"
-                    delay={0.2}
+                <ScaleRevealSpring
+                    delay={0.5}
                     className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow text-center hover:shadow-lg transition-shadow"
                 >
                     <Link href="/collection">
-                        <FaShoppingBag className="w-12 h-12 mx-auto text-amber-600 mb-3" />
+                        <FaShoppingBag className="w-12 h-12 mx-auto text-teal-600 mb-3" />
                         <h4 className="paragraph mb-0 font-semibold text-lg">
                             Continue Shopping
                         </h4>
@@ -58,7 +56,7 @@ function UserDashboard({ user }) {
                             Browse our latest collection
                         </p>
                     </Link>
-                </ScrollReveal>
+                </ScaleRevealSpring>
             </div>
         </div>
     );

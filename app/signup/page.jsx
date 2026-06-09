@@ -99,7 +99,7 @@ function Page() {
 
     return (
         <>
-            <div className="max-w-md mx-auto p-6 bg-white dark:border-zinc-800 rounded-lg shadow">
+            <div className="max-w-md mx-auto p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 rounded-lg shadow">
                 <h1 className="text-5xl tracking-wide pb-5 mb-5 text-center border-b border-zinc-300 dark:border-zinc-800 font-courgette">
                     Sign-up
                 </h1>
