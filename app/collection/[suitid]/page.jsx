@@ -1,5 +1,4 @@
 // app/collection/[suitid]/page.js
-// صفحه نمایش جزئیات یک محصول (کت شلوار) بر اساس آیدی
 
 import { Suspense } from "react";
 import { IoShirtOutline, IoCheckmarkCircle, IoWarning } from "react-icons/io5";
@@ -76,20 +75,19 @@ async function DynamicPrice({ suitId }) {
 }
 
 // ========== کامپوننت دکمه‌های اقدام (بر اساس وضعیت لاگین) ==========
-function ActionButtons({ suitId, user, price }) {
-    // اگر کاربر لاگین کرده باشد، دکمه Add to Cart نمایش داده می‌شود
+async function ActionButtons({ suitId, user, price }) {
     if (user && user.role === "user") {
         return (
-            <div className="grid grid-cols-2  gap-4 mt-6">
+            <div className="grid grid-cols-1  gap-4 mt-6">
                 <AddToCartButton
                     suitId={suitId}
                     price={price}
                 />
                 <Link
                     href="/collection"
-                    className="backButton justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
+                    className="backButton  w-fit hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
                 >
-                    Back to Collection
+                    &larr; &nbsp; Back to Collection
                 </Link>
             </div>
         );

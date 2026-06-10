@@ -5,6 +5,9 @@ import { useState } from "react";
 import { IoShirtOutline } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { FaTrashAlt } from "react-icons/fa";
+import Link from "next/link";
+import { BiShield } from "react-icons/bi";
 
 export default function AddToCartButton({ suitId, price }) {
     const [isLoading, setIsLoading] = useState(false);
@@ -44,15 +47,23 @@ export default function AddToCartButton({ suitId, price }) {
     };
 
     return (
-        <button
-            onClick={handleAddToCart}
-            disabled={isLoading}
-            className="addButton w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-            <IoShirtOutline
-                className={`h-5 w-5 ${isLoading ? "animate-pulse" : ""}`}
-            />
-            {isLoading ? "Placing Order..." : "Order Now"}
-        </button>
+        <div className="flex gap-4 items-center">
+            <button
+                onClick={handleAddToCart}
+                disabled={isLoading}
+                className="addButton w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                <IoShirtOutline
+                    className={`h-5 w-5 ${isLoading ? "animate-pulse" : ""}`}
+                />
+                {isLoading ? "Placing Order..." : "Order Now"}
+            </button>
+            <Link
+                href="/account/orders"
+                className="addButton justify-center w-full bg-amber-100 dark:bg-zinc-950 text-amber-500 border-b border-amber-500 text-center"
+            >
+                Your orders &rarr;
+            </Link>
+        </div>
     );
 }
