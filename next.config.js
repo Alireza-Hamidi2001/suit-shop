@@ -21,12 +21,18 @@ const nextConfig = {
                 port: "",
                 pathname: "/storage/v1/object/public/avatars/**",
             },
-            // ✅ اضافه کردن مسیر آواتارهای کاربران
             {
                 protocol: "https",
                 hostname: "fuywdytjshcmnajjiieu.supabase.co",
                 port: "",
                 pathname: "/storage/v1/object/public/user-images/**",
+            },
+            // ✅ اضافه کردن مسیر گالری
+            {
+                protocol: "https",
+                hostname: "fuywdytjshcmnajjiieu.supabase.co",
+                port: "",
+                pathname: "/storage/v1/object/public/gallery/**", // <-- این خط جدید
             },
         ],
     },

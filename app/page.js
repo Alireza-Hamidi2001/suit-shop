@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { GiClick } from "react-icons/gi";
 import ScrollReveal from "./_components/ScrollReveal";
+import InfiniteGallery from "./_components/InfiniteGallery";
 
 export default function Home() {
     return (
-        <main className="">
-            <div className="absolute font-lime text-6xl  left-4 bottom-49 sm:left-16 sm:bottom-16 w-[90%] md:w-[60%] lg:w-[50%]">
+        <main className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <div className="relative py-8 sm:py-0 font-lime text-6xl">
                 <ScrollReveal direction="right" className="flex-1 space-y-6">
                     <h1 className="bg-dark text-black dark:text-white">
                         Timeless Elegance, Tailored for You
@@ -21,6 +22,9 @@ export default function Home() {
                         </Link>
                     </button>
                 </ScrollReveal>
+            </div>
+            <div className="w-full">
+                <InfiniteGallery />
             </div>
         </main>
     );
